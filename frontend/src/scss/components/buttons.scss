@@ -1,0 +1,46 @@
+@import "../color-config.scss";
+
+.primary-button {
+  display: flex;
+  padding: 0.6rem 1.2rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: $color-primary-hover;
+  border-radius: 0.6rem;
+  justify-content: center;
+
+  text-decoration: none;
+  font-family: $font;
+  color: $color-black;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: transform 0.1s ease-in-out;
+
+  &:hover {
+    transform: scale(0.95);
+    background-color: $color-primary;
+    color: $color-black;
+  }
+}
+
+.secondary-button {
+  display: flex;
+  padding: 0.6rem 1.2rem;
+  background-color: $color-grey;
+  border-radius: 0.6rem;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  text-decoration: none;
+  font-family: $font;
+  color: $color-black;
+  text-align: center;
+  font-size: 1rem;
+  transition: transform 0.1s ease-in-out;
+
+  &:hover {
+    transform: scale(0.95);
+    background-color: $color-grey-hover;
+  }
+}

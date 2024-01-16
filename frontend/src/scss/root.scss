@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "./color-config.scss";
+
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  padding: 1rem;
+  padding-left: 116px;
+  min-height: 95dvh;
+  transition: padding 0.2s ease-in-out;
+  @media screen and (max-width: 680px) {
+    padding-left: 1rem;
+    padding-top: 100px;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.credits {
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  padding-left: 100px;
+  justify-content: center;
+  font-weight: 200;
+  font-size: 0.8rem;
+  color: $color-grey;
+}

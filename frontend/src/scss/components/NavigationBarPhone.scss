@@ -1,0 +1,189 @@
+@import "../color-config.scss";
+
+.NavigationPhone {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: $color-black;
+  color: $color-white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transform: translateY(-100%);
+  transition:
+    transform 0.2s ease-in-out,
+    height 0.2s ease-in-out;
+  overflow: hidden;
+
+  @media screen and (max-width: 680px) {
+    transform: translateY(-0%);
+
+    &_active {
+      height: 100dvh;
+
+      .NavigationPhone_main_container {
+        overflow-y: auto;
+      }
+    }
+  }
+
+  &_main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    &_head {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &_logo {
+        width: 52px;
+        height: 52px;
+
+        background-image: url("/assets/svg/favicon.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border-radius: 100%;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          transform: scale(1.2);
+          filter: drop-shadow(0 0 6px rgba($color-white, 0.3));
+        }
+      }
+      .nav-toggle {
+        display: none;
+      }
+      .nav-toggle-label {
+        display: flex;
+        height: 32px;
+        width: 32px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-image: url("/assets/svg/menu-icon.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+    &_container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      gap: 1.4rem;
+      margin: auto;
+      padding: 1rem;
+
+      .Separate {
+        width: 100%;
+        height: 1px;
+        background-color: $color-white;
+        opacity: 10%;
+        margin: auto;
+      }
+      &_menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1.4rem;
+        list-style: none;
+
+        .linkTo {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          opacity: 40%;
+          gap: 1.2rem;
+          padding: 1rem;
+          &:hover {
+            opacity: 100%;
+          }
+
+          .title {
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
+          .NavIco {
+            display: flex;
+            width: 26px;
+            height: 26px;
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .admin_NavIcon {
+            background-image: url("/assets/svg/icons/home.svg");
+          }
+          .client_NavIcon {
+            background-image: url("/assets/svg/icons/clients.svg");
+          }
+          .giftcard_NavIcon {
+            background-image: url("/assets/svg/icons/giftcards.svg");
+          }
+          .email_NavIcon {
+            background-image: url("/assets/svg/icons/email.svg");
+          }
+        }
+        .active {
+          border-left: solid 3px $color-white;
+          border-right: solid 3px rgba(0, 0, 0, 0);
+          opacity: 100%;
+          margin-left: -3px;
+        }
+      }
+      &_logout {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 1.4rem;
+        padding-left: 1rem;
+
+        &_btn {
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+          width: 100%;
+          height: 26px;
+          opacity: 40%;
+          background: none;
+          border: none;
+          transition: transform 0.1s ease-in-out;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 100%;
+          }
+        }
+        .LogOutBtn {
+          width: 26px;
+          height: 26px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-image: url("/assets/svg/icons/logout.svg");
+        }
+        .LogOutTitle {
+          color: $color-white;
+          font-size: 1rem;
+          font-weight: 500;
+        }
+
+        .OpenSliderBtn {
+          background-image: url("/assets/svg/icons/navhover.svg");
+        }
+      }
+    }
+  }
+}

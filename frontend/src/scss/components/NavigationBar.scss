@@ -1,0 +1,159 @@
+@import "../color-config.scss";
+
+.Navigation {
+  display: flex;
+  width: 100px;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: $color-black;
+  color: $color-white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+
+  @media screen and (max-width: 680px) {
+    transform: translateX(-100%);
+  }
+
+  &_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0;
+    overflow-y: auto;
+
+    &_head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &_logo {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 1rem;
+        background-image: url("/assets/svg/favicon.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border-radius: 100%;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          transform: scale(1.2);
+          filter: drop-shadow(0 0 6px rgba($color-white, 0.3));
+        }
+      }
+    }
+    &_container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin: 32px auto;
+      width: 100%;
+      height: 100%;
+
+      gap: 1.4rem;
+
+      .Separate {
+        width: 80%;
+        height: 1px;
+        background-color: $color-white;
+        opacity: 10%;
+        margin: auto;
+      }
+      &_menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+        gap: 1.4rem;
+        list-style: none;
+
+        .linkTo {
+          display: flex;
+          align-items: center;
+          margin: auto;
+          width: 100%;
+          height: 40px;
+          opacity: 40%;
+
+          &:hover {
+            opacity: 100%;
+          }
+
+          .NavIco {
+            display: flex;
+            width: 26px;
+            height: 26px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+          }
+          .admin_NavIcon {
+            background-image: url("/assets/svg/icons/home.svg");
+          }
+          .client_NavIcon {
+            background-image: url("/assets/svg/icons/clients.svg");
+          }
+          .giftcard_NavIcon {
+            background-image: url("/assets/svg/icons/giftcards.svg");
+          }
+          .email_NavIcon {
+            background-image: url("/assets/svg/icons/email.svg");
+          }
+        }
+        .active {
+          border-left: solid 3px $color-white;
+          border-right: solid 3px rgba(0, 0, 0, 0);
+          opacity: 100%;
+          .NavIco {
+            padding-right: 8px;
+          }
+        }
+      }
+      &_logout {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 1.4rem;
+
+        &_btn {
+          width: 26px;
+          height: 26px;
+          margin-left: 37px;
+          background: none;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          border: none;
+          opacity: 60%;
+          cursor: pointer;
+          transition: transform 0.1s ease-in-out;
+
+          &:hover {
+            transform: scale(1.2);
+            opacity: 100%;
+          }
+        }
+
+        .LogOutBtn {
+          background-image: url("/assets/svg/icons/logout.svg");
+        }
+        .OpenSliderBtn {
+          background-image: url("/assets/svg/icons/navhover.svg");
+        }
+      }
+    }
+  }
+}

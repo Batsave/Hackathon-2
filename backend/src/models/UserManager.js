@@ -9,9 +9,9 @@ class UserManager extends AbstractManager {
 
   async create(user, hashedPassword) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (nom, prenom, email, password)
-             values (?, ?, ?, ?)`,
-      [user.nom, user.prenom, user.email, hashedPassword]
+      `insert into ${this.table} (email, password)
+             values (?, ?)`,
+      [user.email, hashedPassword]
     );
 
     return result.insertId;
@@ -46,17 +46,10 @@ class UserManager extends AbstractManager {
 
   async update(id, updatedUser) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET )prenom=?,
-    nom=?,
+      `UPDATE ${this.table} SET )
     email=?,
     password=? WHERE id=? `,
-      [
-        updatedUser.firstname,
-        updatedUser.lastname,
-        updatedUser.email,
-        updatedUser.password,
-        id,
-      ]
+      [updatedUser.email, updatedUser.password, id]
     );
     console.info(result);
     return result;
@@ -64,7 +57,7 @@ class UserManager extends AbstractManager {
 
   async signIn(email) {
     const [user] = await this.database.query(
-      `SELECT * FROM user WHERE email = ?`,
+      `SELECT * FROM users WHERE email = ?`,
       [email]
     );
     return user;
@@ -72,7 +65,7 @@ class UserManager extends AbstractManager {
 
   async saveToken(token, email) {
     const [result] = await this.database.query(
-      `UPDATE user SET token=? WHERE email=?`,
+      `UPDATE users SET token=? WHERE email=?`,
       [token, email]
     );
     return result;
@@ -80,7 +73,7 @@ class UserManager extends AbstractManager {
 
   async setLastConnexion(date, email) {
     const [result] = await this.database.query(
-      `UPDATE user SET last_login=? WHERE email=?`,
+      `UPDATE users SET last_login=? WHERE email=?`,
       [date, email]
     );
     return result;
@@ -88,7 +81,7 @@ class UserManager extends AbstractManager {
 
   async checkToken(token) {
     const [user] = await this.database.query(
-      `SELECT * FROM user WHERE token = ?`,
+      `SELECT * FROM users WHERE token = ?`,
       [token]
     );
     return user;

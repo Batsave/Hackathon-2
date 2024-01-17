@@ -19,7 +19,7 @@ export default function SuccessLogOut() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Déconnexion en cours..</h1>
+          <h1>Log out in progress..</h1>
         </div>
       </div>
     </div>

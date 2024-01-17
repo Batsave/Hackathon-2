@@ -7,8 +7,6 @@ const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
 
-const responseCache = new Map();
-
 const app = express();
 const server = http.createServer(app);
 
@@ -23,18 +21,25 @@ const io = socketIo(server, {
 const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 async function fetchResponseToMessage(message) {
-  if (responseCache.has(message)) {
-    return responseCache.get(message);
-  }
+  const initialPrompt = `You are an intelligent assistant specialized in recommending L'Oréal beauty products for professionals. Your expertise is geared towards the needs of hair and beauty salons. When a salon manager or employee asks you for advice on L'Oréal products, you offer options tailored to their specific professional needs. A salon manager asks you:`;
+  const fullMessage = `${initialPrompt}\nClient : ${message}\nAssistant :`;
 
   try {
     const response = await openai.chat.completions.create({
-      messages: [{ role: "system", content: "You are a helpful assistant." }],
       model: "gpt-3.5-turbo",
+      messages: [{ role: "system", content: fullMessage }],
     });
-    console.info(message);
-    responseCache.set(message, response.data.choices[0].text);
-    return response.data.choices[0].text;
+    console.info("Response from OpenAI:", response);
+
+    if (
+      response.choices &&
+      response.choices.length > 0 &&
+      response.choices[0].message
+    ) {
+      return response.choices[0].message.content;
+    }
+
+    return "Désolé, je n'ai pas pu obtenir de réponse.";
   } catch (error) {
     console.error(error);
     return "Une erreur s'est produite lors de la connexion au service d'IA.";

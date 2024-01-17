@@ -18,10 +18,10 @@ export default function Header() {
       )
       .then((res) => {
         if (res.data.message === "OK") {
-          console.info("Déconnexion en cours...");
+          console.info("Log out in progress...");
           window.location.href = "/logout";
         } else {
-          console.info("Impossible de se déconnecter");
+          console.info("Log out failed");
         }
       });
   }

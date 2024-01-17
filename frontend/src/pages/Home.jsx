@@ -3,7 +3,7 @@ import { BarChart, Bar, Rectangle, XAxis, ResponsiveContainer } from "recharts";
 import axios from "axios";
 import Lottie from "react-lottie-player";
 
-import "../scss/admin.scss";
+import "../scss/home.scss";
 import "../scss/pages.scss";
 
 import Navigation from "../components/NavigationBar";

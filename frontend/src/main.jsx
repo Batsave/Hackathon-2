@@ -14,6 +14,7 @@ import EmailError from "./pages/EmailError";
 import SignIn from "./pages/Auth/SignIn";
 import SuccessAuth from "./pages/Auth/SuccessAuth";
 import SuccessLogOut from "./pages/Auth/SuccessLogOut";
+import CreateAccount from "./pages/Auth/[NOTUSE]CreateAccount";
 
 import Clients from "./pages/Clients/Clients";
 import ClientId from "./pages/Clients/ClientId";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <SignIn />,
+      },
+      {
+        path: "/create",
+        element: <CreateAccount />,
       },
       // Error Section
       {

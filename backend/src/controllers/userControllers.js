@@ -73,26 +73,26 @@ const login = async (req, res, next) => {
   try {
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
     console.info(`New request from : ${ip}`);
-    const users = await tables.users.signIn(email);
+    const user = await tables.users.signIn(email);
     const ActualDate = new Date();
-    if (users.length === 1) {
-      const verified = await argon2.verify(users[0].password, password);
+    if (user.length === 1) {
+      const verified = await argon2.verify(user[0].password, password);
 
       if (verified) {
-        delete users.password;
+        delete user.password;
 
         const AdminusersToken = jwt.sign(
           {
-            email: users[0].email,
-            usersId: users[0].id,
-            admin: users[0].admin,
+            email: user[0].email,
+            userId: user[0].id,
+            admin: user[0].admin,
           },
           process.env.JWT_SECRET,
           { expiresIn: "24h" }
         );
 
-        if (users[0].admin === 1) {
-          console.info(`Welcome ${users[0].prenom} ${users[0].nom}`);
+        if (user[0].admin === 1) {
+          console.info(`Welcome Admin : ${user[0].email}`);
           res.cookie("LorealAdminToken", AdminusersToken, {
             httpOnly: true,
             maxAge: 3600000,

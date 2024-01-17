@@ -1,31 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "../../scss/auth/SignInPage.scss";
 import ScrollToTop from "../ResetScrollOnPage";
 
 export default function SignIn() {
-  useEffect(() => {
-    axios
-      .post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/checktoken`,
-        "CheckMePlease",
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        if (res.data.message === "OK") {
-          console.info("Connexion Approuvée");
-        } else {
-          console.info("Connexion Refusée");
-        }
-      });
-  }, []);
-
   const [details, setDetails] = useState({
     email: "",
-    firstname: "",
-    lastname: "",
+    password: "",
   });
 
   const isEmailValid = (value) => {
@@ -78,10 +59,8 @@ export default function SignIn() {
         document.getElementById("email").classList.remove("errorOnPlaceholder");
 
         const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api/login`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/create`,
           {
-            nom: escapeHtml(details.lastname),
-            prenom: escapeHtml(details.firstname),
             email: escapeHtml(details.email),
             password: escapeHtml(details.password),
           }
@@ -122,32 +101,6 @@ export default function SignIn() {
         <form className="SignIn_container_form">
           <container className="SignIn_container_form_box">
             <div className="form_placeholder">
-              <p className="form_placeholder_title">Prénom</p>
-              <input
-                className="form_placeholder_input"
-                name="firstname"
-                id="firstname"
-                value={details.firstname || ""}
-                onChange={handleDetailsChange}
-                type="text"
-                placeholder="John"
-                required
-              />
-            </div>
-            <div className="form_placeholder">
-              <p className="form_placeholder_title">Nom</p>
-              <input
-                className="form_placeholder_input"
-                name="lastname"
-                id="lastname"
-                value={details.lastname || ""}
-                onChange={handleDetailsChange}
-                type="text"
-                placeholder="Doe"
-                required
-              />
-            </div>
-            <div className="form_placeholder">
               <p className="form_placeholder_title">Email</p>
               <input
                 className="form_placeholder_input"
@@ -173,8 +126,6 @@ export default function SignIn() {
                 minLength="8"
                 type="password"
                 placeholder="***"
-                autoComplete="true"
-                aria-current="true"
                 required
               />
             </div>

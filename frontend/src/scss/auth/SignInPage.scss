@@ -78,13 +78,13 @@
     flex-direction: column;
     width: 100%;
     max-width: 1280px;
-    padding: rem 0;
+    padding: 0;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
     font-weight: 400;
-    color: $color-white;
+    color: $color-light;
     text-align: center;
     transform: translateY(50%);
     opacity: 0%;
@@ -104,7 +104,7 @@
 
     @media screen and (max-width: 720px) {
       padding: 0;
-      color: $color-black;
+      color: $color-light;
     }
   }
 

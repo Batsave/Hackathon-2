@@ -9,11 +9,10 @@ class GiftcardManager extends AbstractManager {
 
   async create(carteCadeau) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (client_id, massage_id, forfait_id, montant, paiementType, acheteur_id, date_achat, date_expiration, utilise)
-             values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (client_id, forfait_id, montant, paiementType, acheteur_id, date_achat, date_expiration, utilise)
+             values (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         carteCadeau.client_id,
-        carteCadeau.massage_id,
         carteCadeau.forfait_id,
         carteCadeau.montant,
         carteCadeau.paiementType,
@@ -70,7 +69,6 @@ class GiftcardManager extends AbstractManager {
   async update(id, updatedCarteCadeau) {
     const [result] = await this.database.query(
       `UPDATE ${this.table} SET client_id=?,
-      massage_id=?,
       forfait_id=?,
       montant=?,
       paiementType=?,
@@ -78,7 +76,6 @@ class GiftcardManager extends AbstractManager {
       utilise=? WHERE id=? `,
       [
         updatedCarteCadeau.client_id,
-        updatedCarteCadeau.massage_id,
         updatedCarteCadeau.forfait_id,
         updatedCarteCadeau.montant,
         updatedCarteCadeau.paiementType,

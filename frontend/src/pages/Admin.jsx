@@ -33,9 +33,9 @@ export default function Admin() {
         } else throw new Error("Accès refusé");
       } catch (error) {
         setIsLoggedIn(true);
-        // setTimeout(() => {
-        //   window.location.href = "/";
-        // }, 3800);
+        /* setTimeout(() => {
+          window.location.href = "/";
+        }, 3800); */
       }
       setIsLoading(false);
     };

@@ -12,7 +12,7 @@ const SendManualMail = async (req, res, next) => {
     });
 
     const mailOptions = {
-      from: `Epimeleia Massage <${process.env.MAIL_SENDER}>`,
+      from: `L'Oreal <${process.env.MAIL_SENDER}>`,
       to,
       subject,
       html: `<body style="margin: 0; padding: 0">
@@ -29,8 +29,8 @@ const SendManualMail = async (req, res, next) => {
         "
       >
       <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #101010; width: 100%; height: 120px; border-radius: 0.5rem;">
-        <a  href="https://www.epimeleia-massage.fr/"
-            style="margin:auto; background-image: url(https://www.epimeleia-massage.fr/Sources/svg/favicon.png); background-repeat: no-repeat; background-size: contain; background-position: center; width: 100px; height: 100px;"
+        <a  href="https://www.loreal.fr/"
+            style="margin:auto; background-image: url(https://www.loreal.fr/Sources/svg/favicon.png); background-repeat: no-repeat; background-size: contain; background-position: center; width: 100px; height: 100px;"
         /></a>
       </div>
       

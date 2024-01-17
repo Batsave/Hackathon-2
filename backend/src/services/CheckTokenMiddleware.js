@@ -5,11 +5,11 @@ const currentTime = new Date();
 
 const checktoken = async (req, res, next) => {
   try {
-    if (!req.cookies.EpimeleiaAdminToken) {
-      throw new Error("Acces Refusé");
+    if (!req.cookies.LorealAdminToken) {
+      throw new Error("Access denied");
     } else {
-      const { EpimeleiaAdminToken } = req.cookies;
-      const token = EpimeleiaAdminToken;
+      const { LorealAdminToken } = req.cookies;
+      const token = LorealAdminToken;
 
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -24,7 +24,7 @@ const checktoken = async (req, res, next) => {
       ) {
         next();
       } else {
-        throw new Error("Acces Refusé");
+        throw new Error("Access Denied");
       }
     }
   } catch (err) {

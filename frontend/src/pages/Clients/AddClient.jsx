@@ -24,7 +24,7 @@ export default function AddClient() {
     nom: "",
     prenom: "",
     email: "",
-    telephone: "",
+    password: "",
     adresse: "",
     codePostal: "",
     ville: "",

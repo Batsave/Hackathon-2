@@ -14,7 +14,7 @@ const checktoken = async (req, res, next) => {
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
       const { email, userId, admin } = decodedToken;
-      const checkUserToken = await tables.user.checkToken(token);
+      const checkUserToken = await tables.users.checkToken(token);
       if (
         checkUserToken.length === 1 &&
         checkUserToken[0].email === email &&

@@ -22,6 +22,7 @@ const { checktoken } = require("./services/CheckTokenMiddleware");
 
 // Route to connect user
 router.post("/login", userControllers.login);
+router.post("/create", userControllers.add);
 
 router.use(checktoken);
 

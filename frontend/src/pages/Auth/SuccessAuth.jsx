@@ -18,7 +18,7 @@ export default function SuccessLogIn() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Connexion en cours</h1>
+          <h1>Connecting..</h1>
         </div>
       </div>
     </div>

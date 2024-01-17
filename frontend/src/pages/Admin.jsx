@@ -97,7 +97,7 @@ export default function Admin() {
         <div className="admin_container_infos">
           <div className="content">
             <div className="Title">
-              <p className="name">Nombre de Massage</p>
+              <p className="name">Votre activité</p>
               <p className="subname">3 derniers mois</p>
             </div>
             <ResponsiveContainer width="100%" height="100%">

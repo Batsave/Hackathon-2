@@ -102,7 +102,7 @@ export default function SignIn() {
         document.getElementById("successLog").innerText =
           "Authentification en cours...";
 
-        localStorage.setItem("EpimeleiaAdminToken", response.data.token);
+        localStorage.setItem("LorealAdminToken", response.data.token);
 
         setTimeout(() => {
           window.location.href = "/success-auth";
@@ -125,7 +125,7 @@ export default function SignIn() {
           className="SignIn_container_logo_ico"
         />
         <div className="SignIn_container_title">
-          <h1>Connexion</h1>
+          <h1>Let's connect</h1>
         </div>
         <form className="SignIn_container_form">
           <div className="SignIn_container_form_box">
@@ -144,7 +144,7 @@ export default function SignIn() {
               />
             </div>
             <div className="form_placeholder form_final">
-              <p className="form_placeholder_title">Mot de Passe</p>
+              <p className="form_placeholder_title">Password</p>
               <input
                 className="form_placeholder_input"
                 name="password"
@@ -168,7 +168,7 @@ export default function SignIn() {
               onClick={handleSubmit}
               className="signIn"
             >
-              Se connecter
+              Sign In
             </button>
           </div>
           <p className="error_container" id="errorEmail" />

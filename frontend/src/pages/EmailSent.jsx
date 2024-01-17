@@ -15,10 +15,8 @@ export default function EmailSent() {
           play
           style={{ width: 120, height: 120 }}
         />
-        <h1>Votre message à bien été transmit</h1>
-        <p className="message">
-          Nous vous recontacterons dans les plus brefs délais.
-        </p>
+        <h1>Your message has been successfully transmitted</h1>
+        <p className="message">We will get back to you as soon as possible.</p>
         <PrimaryButton btnText="retourner à la page d'accueil" btnLink="/" />
       </div>
     </section>

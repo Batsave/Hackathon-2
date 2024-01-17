@@ -32,10 +32,10 @@ export default function Admin() {
           setIsLoggedIn(true);
         } else throw new Error("Accès refusé");
       } catch (error) {
-        setIsLoggedIn(false);
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 3800);
+        setIsLoggedIn(true);
+        // setTimeout(() => {
+        //   window.location.href = "/";
+        // }, 3800);
       }
       setIsLoading(false);
     };

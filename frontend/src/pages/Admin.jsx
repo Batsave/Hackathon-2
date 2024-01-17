@@ -88,7 +88,7 @@ export default function Admin() {
   }
 
   return (
-    <main>
+    <main id="MainContent">
       <Navigation />
       <NavigationPhone />
       <ResetScrollOnPage />
@@ -97,7 +97,7 @@ export default function Admin() {
         <div className="admin_container_infos">
           <div className="content">
             <div className="Title">
-              <p className="name">Nombre de Massage</p>
+              <p className="name">Nombre de COmmande</p>
               <p className="subname">3 derniers mois</p>
             </div>
             <ResponsiveContainer width="100%" height="100%">
@@ -115,15 +115,6 @@ export default function Admin() {
                 />
               </BarChart>
             </ResponsiveContainer>
-          </div>
-          <div className="content">
-            <p>stats2</p>
-          </div>
-          <div className="content">
-            <p>stats3</p>
-          </div>
-          <div className="content">
-            <p>stats4</p>
           </div>
         </div>
       </div>

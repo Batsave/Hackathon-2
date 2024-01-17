@@ -117,7 +117,9 @@ export default function SignIn() {
   return (
     <div className="SignInMain">
       <ScrollToTop />
-
+      <video className="SignIn_container_video" autoPlay muted loop>
+        <source src="/assets/mp4/sign-in-loop.mp4" type="video/mp4" />^
+      </video>
       <div className="SignIn_container ">
         <img
           src="assets/svg/favicon.svg"

@@ -57,25 +57,21 @@ export default function Header() {
         <div className="Navigation_main_container">
           <div className="Navigation_main_container_menu">
             <hr className="Separate" />
-            <NavLink to="/admin" className="linkTo" activeclassname="active">
-              <div className="admin_NavIcon NavIco" />
-              <p className="LinkName">Accueil</p>
+            <NavLink to="/home" className="linkTo" activeclassname="active">
+              <div className="home_NavIcon NavIco" />
+              <p className="LinkName">Home</p>
             </NavLink>
-            <NavLink to="/clients" className="linkTo" activeclassname="active">
-              <div className="client_NavIcon NavIco" />
-              <p className="LinkName">Compte</p>
+            <NavLink to="/account" className="linkTo" activeclassname="active">
+              <div className="account_NavIcon NavIco" />
+              <p className="LinkName">Account</p>
             </NavLink>
-            <NavLink
-              to="/giftcards"
-              className="linkTo"
-              activeclassname="active"
-            >
-              <div className="giftcard_NavIcon NavIco" />
-              <p className="LinkName">Produits</p>
+            <NavLink to="/products" className="linkTo" activeclassname="active">
+              <div className="products_NavIcon NavIco" />
+              <p className="LinkName">Products</p>
             </NavLink>
-            <NavLink to="/email" className="linkTo" activeclassname="active">
-              <div className="email_NavIcon NavIco" />
-              <p className="LinkName">Commandes</p>
+            <NavLink to="/orders" className="linkTo" activeclassname="active">
+              <div className="order_NavIcon NavIco" />
+              <p className="LinkName">Orders</p>
             </NavLink>
             <hr className="Separate" />
           </div>
@@ -86,14 +82,14 @@ export default function Header() {
               className="OpenBar Navigation_main_container_logout_btn"
               onClick={() => setNavState(!NavState)}
             >
-              <p className="TextGapDeconnexion">Fermer</p>
+              <p className="TextGapDeconnexion">Close</p>
             </button>
             <button
               type="button"
               className="Navigation_main_container_logout_btn LogOutBtn"
               onClick={handleLogOut}
             >
-              <p className="TextGapDeconnexion">Déconnexion</p>
+              <p className="TextGapDeconnexion">Log Out</p>
             </button>
           </div>
         </div>

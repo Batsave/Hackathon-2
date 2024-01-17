@@ -7,9 +7,8 @@ const currentTime = new Date();
 const browse = async (req, res, next) => {
   try {
     const GiftcardsList = await tables.carte_cadeau.readAll();
-    const MassagesList = await tables.massage.readAll();
     const ClientsList = await tables.client.readAll();
-    res.json({ GiftcardsList, MassagesList, ClientsList });
+    res.json({ GiftcardsList, ClientsList });
   } catch (err) {
     next(err);
   }
@@ -50,7 +49,6 @@ const readWithID = async (req, res, next) => {
 const edit = async (req, res, next) => {
   const updatedCarteCadeau = {
     client_id: req.body.client_id,
-    massage_id: req.body.massage_id,
     forfait_id: req.body.forfait_id,
     montant: req.body.montant,
     paiementType: req.body.paiementType,
@@ -65,7 +63,7 @@ const edit = async (req, res, next) => {
     );
 
     if (CarteCadeau.affectedRows === 0) {
-      res.sendStatus(204).send("Aucune carte cadeau trouvé");
+      res.sendStatus(204).send("Gift card not found");
     } else {
       res.sendStatus(200);
     }
@@ -83,8 +81,8 @@ const add = async (req, res, next) => {
     (receveur.nom === "" && receveur.prenom === "") ||
     (acheteur.nom === "" && acheteur.prenom === "")
   ) {
-    res.status(400).send({ message: "Le receveur ou l'acheteur est manquant" });
-    throw new Error("Le receveur ou l'acheteur est manquant");
+    res.status(400).send({ message: "Receiver or buyer is missing" });
+    throw new Error("Receiver or buyer is missing");
   }
   let ReceveurID = null;
   let AcheteurID = null;
@@ -137,7 +135,6 @@ const add = async (req, res, next) => {
 
   const newCarteCadeau = {
     client_id: ReceveurID,
-    massage_id: giftcard.massageId,
     forfait_id: !giftcard.forfaitId ? null : giftcard.forfaitId,
     montant: giftcard.montant,
     paiementType: giftcard.paiementType,
@@ -155,8 +152,8 @@ const add = async (req, res, next) => {
 // The D of BREAD - Destroy (Delete) operation
 const destroyGiftcardWithId = async (req, res, next) => {
   const { password } = req.body;
-  const { EpimeleiaAdminToken } = req.cookies;
-  const token = EpimeleiaAdminToken;
+  const { LorealAdminToken } = req.cookies;
+  const token = LorealAdminToken;
   const hashingOptions = {
     type: argon2.argon2id,
     memoryCost: 19 * 2 ** 10 /* 19 Mio en kio (19 * 1024 kio) */,
@@ -172,10 +169,7 @@ const destroyGiftcardWithId = async (req, res, next) => {
   // Initialisation de la tentative de suppression de données
   // Verification du token
   try {
-    console.warn(
-      Date(),
-      ` | Tentative de suppression de données depuis IP | ${ip}`
-    );
+    console.warn(Date(), ` | Attempt to delete data from IP | ${ip}`);
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const { email, admin } = decodedToken;
 
@@ -195,26 +189,22 @@ const destroyGiftcardWithId = async (req, res, next) => {
           // Verification de l'existence de l'utilisateur à supprimer
           const giftcard = await tables.carte_cadeau.readWithID(req.params.id);
           if (giftcard === null || giftcard === undefined) {
-            throw new Error("La Carte Cadeau n'existe pas");
+            throw new Error("Gift Card does not exist");
           } else {
             console.warn(
               Date(),
-              ` | Suppression de la Carte Cadeau | ${giftcard.id} | par | ${email} | depuis IP | ${ip}`
+              ` | Gift Card has been deleted | ${giftcard.id} | par | ${email} | depuis IP | ${ip}`
             );
             await tables.carte_cadeau.deleteWithId(req.params.id);
-            res
-              .status(200)
-              .send({ message: "la Carte Cadeau a été supprimée" });
+            res.status(200).send({ message: "gift Card has been deleted" });
             return;
           }
         }
-        throw new Error(
-          "Vous n'avez pas les droits pour supprimer les données"
-        );
+        throw new Error("You do not have the rights to delete the data");
       }
-      throw new Error("Mot de passe incorrect");
+      throw new Error("incorrect password");
     }
-    res.status(401).send({ message: "Vous n'êtes pas connecté" });
+    res.status(401).send({ message: "You are not connected" });
   } catch (err) {
     next(err);
   }

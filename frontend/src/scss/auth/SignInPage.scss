@@ -24,11 +24,10 @@
   gap: 1rem;
 
   &_logo_ico {
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
     transform: translateY(-50%);
     opacity: 0%;
-    filter: drop-shadow(0px 0px 16px rgba($color-white, 0.1));
     transform: translateY(50%);
     animation: LogoOpen 1.8s 1s forwards;
 

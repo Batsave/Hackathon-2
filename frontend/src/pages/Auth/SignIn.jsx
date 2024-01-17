@@ -18,7 +18,7 @@ export default function SignIn() {
       .then((res) => {
         if (res.data.message === "OK") {
           console.info("Connexion Approuvée");
-          window.location.href = "/admin";
+          window.location.href = "/home";
         }
       });
   }, []);

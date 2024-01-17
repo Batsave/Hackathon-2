@@ -5,7 +5,7 @@ import ScrollToTop from "../ResetScrollOnPage";
 
 export default function SuccessLogIn() {
   setTimeout(() => {
-    window.location.href = "/admin";
+    window.location.href = "/home";
   }, 3800);
   return (
     <div className="SuccessLogIn">

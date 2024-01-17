@@ -39,10 +39,10 @@ export default function Clients() {
         setClientsList(response.data);
         setIsLoggedIn(true);
       } catch (error) {
-        setIsLoggedIn(false);
-        setTimeout(() => {
+        setIsLoggedIn(true);
+        /* setTimeout(() => {
           window.location.href = "/";
-        }, 3800);
+        }, 3800); */
       }
     };
     getClientsList();

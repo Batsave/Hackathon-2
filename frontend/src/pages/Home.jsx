@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BarChart, Bar, Rectangle, XAxis, ResponsiveContainer } from "recharts";
 import axios from "axios";
 import Lottie from "react-lottie-player";
 
@@ -43,23 +42,6 @@ export default function Admin() {
     CheckAuth();
   }, []);
 
-  // Liste Fictive des stats
-  // -----------------------------------------------------------------------------------------------
-  const data = [
-    {
-      name: "Janvier",
-      value: 25,
-    },
-    {
-      name: "Fevrier",
-      value: 18,
-    },
-    {
-      name: "Mars",
-      value: 32,
-    },
-  ];
-
   // logo de chargement et redirection si l'utilisateur n'est pas connecté
   // -----------------------------------------------------------------------------------------------
   if (isLoading) {
@@ -95,26 +77,18 @@ export default function Admin() {
       <div className="admin_container">
         {/* <Header /> */}
         <div className="admin_container_infos">
-          <div className="content">
-            <div className="Title">
-              <p className="name">Nombre de COmmande</p>
-              <p className="subname">3 derniers mois</p>
+          <div className="admin_container_infos_banner">
+            <span />
+            <div className="banner_box">
+              <p className="banner_box_new">NEW</p>
+              <p className="banner_box_name">[Metal Detox]</p>
+              <p className="banner_box_title">
+                Acts against hair breakage and preserves color.
+              </p>
+              <button type="button" className="banner_box_button">
+                Shop now
+              </button>
             </div>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
-                <XAxis dataKey="name" />
-                <Bar
-                  dataKey="value"
-                  fill="#202020"
-                  activeBar={<Rectangle fill="#f5bc2e" stroke="#202020" />}
-                  label={{
-                    position: "under",
-                    fill: "#fefefe",
-                  }}
-                  isAnimationActive={false}
-                />
-              </BarChart>
-            </ResponsiveContainer>
           </div>
         </div>
       </div>

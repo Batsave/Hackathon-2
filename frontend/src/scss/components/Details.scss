@@ -5,9 +5,6 @@
   justify-content: center;
 }
 
-.brand {
-}
-
 .picture {
   background-color: gray;
   width: 60px;
@@ -22,14 +19,32 @@
 }
 
 .description {
-  width: 100vw;
+  width: 70vw;
   text-align: center;
   margin-top: 4rem;
+  border-top: 1px solid lightgray;
+  padding-top: 2rem;
 }
 
 .product_and_add_container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+}
+
+.button_add {
+  color: white;
+  background-color: black;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.4s ease;
+}
+
+.button_add:hover {
+  background-color: rgb(227, 41, 72);
+}
+
+.product_Name {
+  margin-bottom: 1rem;
 }

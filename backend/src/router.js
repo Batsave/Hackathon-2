@@ -9,7 +9,6 @@ const router = express.Router();
 // Import itemControllers module for handling item-related operations
 const userControllers = require("./controllers/userControllers");
 const clientControllers = require("./controllers/clientControllers");
-const giftcardControllers = require("./controllers/giftcardControllers");
 const multiControllers = require("./controllers/multiControllers");
 const nodemailerControllers = require("./controllers/nodemailerControllers");
 const ordersControllers = require("./controllers/ordersControllers");
@@ -45,16 +44,6 @@ router.post("/client/delete/:id", multiControllers.destroyUserWithId);
 // ---------------------------------------------------------------------
 router.get("/product", productsControllers.browse);
 router.get("/product/:id", productsControllers.readWithId);
-
-// Route Carte Cadeau
-// ---------------------------------------------------------------------
-
-router.get("/giftcard", giftcardControllers.browse);
-router.get("/giftcard/info", multiControllers.giftcardInfo);
-router.post("/giftcard/add", giftcardControllers.add);
-router.get("/giftcard/:id", multiControllers.giftcardInfoWithId);
-router.post("/giftcard/update/:id", giftcardControllers.edit);
-router.post("/giftcard/delete/:id", giftcardControllers.destroyGiftcardWithId);
 
 // Route Nodemailer
 // ---------------------------------------------------------------------

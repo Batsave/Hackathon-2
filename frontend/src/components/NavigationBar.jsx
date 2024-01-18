@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import axios from "axios";
+import Chatbot from "../pages/Chatbot";
 
 import "../scss/components/NavigationBar.scss";
 
 export default function Header() {
   const [NavState, setNavState] = useState(false);
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
 
   function handleLogOut() {
     axios
@@ -76,6 +78,16 @@ export default function Header() {
             <hr className="Separate" />
           </div>
           <div className="Navigation_main_container_logout">
+            <button
+              type="button"
+              className="Navigation_main_container_logout_btn LorIA"
+              onClick={() => setIsChatbotVisible(!isChatbotVisible)}
+              aria-label="Toggle Chatbot"
+            >
+              {" "}
+              <p className="TextGapDeconnexion">LorIA</p>
+            </button>
+            <Chatbot className="chatbotcss" isVisible={isChatbotVisible} />
             <button
               type="button"
               id="NavigationState"

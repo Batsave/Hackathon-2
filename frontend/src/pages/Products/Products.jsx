@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
+
 import "../../scss/Products/products.scss";
 import "../../scss/Products/productID.scss";
 import Navigation from "../../components/NavigationBar";

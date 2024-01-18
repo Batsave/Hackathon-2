@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Products Table
 -- ----------------------------------------------------------
 CREATE TABLE IF NOT EXISTS products (

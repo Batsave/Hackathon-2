@@ -18,7 +18,7 @@ export default function SignIn() {
       .then((res) => {
         if (res.data.message === "OK") {
           console.info("Connexion Approuvée");
-          window.location.href = "/admin";
+          window.location.href = "/home";
         }
       });
   }, []);
@@ -117,7 +117,9 @@ export default function SignIn() {
   return (
     <div className="SignInMain">
       <ScrollToTop />
-
+      <video className="SignIn_container_video" autoPlay muted loop>
+        <source src="/assets/mp4/sign-in-loop.mp4" type="video/mp4" />^
+      </video>
       <div className="SignIn_container ">
         <img
           src="assets/svg/favicon.svg"
@@ -130,7 +132,7 @@ export default function SignIn() {
         <form className="SignIn_container_form">
           <div className="SignIn_container_form_box">
             <div className="form_placeholder">
-              <p className="form_placeholder_title">Email</p>
+              <p className="form_placeholder_title">Mail</p>
               <input
                 className="form_placeholder_input"
                 name="email"
@@ -168,7 +170,7 @@ export default function SignIn() {
               onClick={handleSubmit}
               className="signIn"
             >
-              SIGN IN
+              Sign in
             </button>
           </div>
           <p className="error_container" id="errorEmail" />

@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Markdown from "react-markdown";
 import Lottie from "react-lottie-player";
-
 import "../../scss/clients/addclient.scss";
-
 import Navigation from "../../components/NavigationBar";
 import NavigationPhone from "../../components/NavigationBarPhone";
 import AlertBox from "../../components/alertBox/alertBox";
 import ScrollToTop from "../ResetScrollOnPage";
-
 import mailError from "../../assets/LottieFiles/EmailError.json";
 
 export default function AddClient() {

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import ScrollToTop from "./ResetScrollOnPage";
-
 import Navigation from "../components/NavigationBar";
 import NavigationPhone from "../components/NavigationBarPhone";
 

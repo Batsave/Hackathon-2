@@ -8,7 +8,6 @@ const readClientInfo = async (req, res, next) => {
   try {
     const client = await tables.client.read(req.params.id);
     const giftcards = await tables.carte_cadeau.readWithClientID(client.id);
-    const massages = await tables.massage.readAll();
 
     if (client == null) {
       res.sendStatus(404);
@@ -16,7 +15,6 @@ const readClientInfo = async (req, res, next) => {
       res.json({
         client,
         giftcards,
-        massages,
       });
     }
   } catch (err) {
@@ -26,9 +24,8 @@ const readClientInfo = async (req, res, next) => {
 
 const giftcardInfo = async (req, res, next) => {
   try {
-    const massages = await tables.massage.readAll();
     const typePaiement = await tables.type_paiement.readAll();
-    res.json({ massages, typePaiement });
+    res.json({ typePaiement });
   } catch (err) {
     next(err);
   }
@@ -37,11 +34,10 @@ const giftcardInfo = async (req, res, next) => {
 const giftcardInfoWithId = async (req, res, next) => {
   try {
     const giftcard = await tables.carte_cadeau.readWithID(req.params.id);
-    const massages = await tables.massage.readAll();
     const typePaiement = await tables.type_paiement.readAll();
     const clients = await tables.client.readAll();
 
-    res.json({ giftcard, massages, typePaiement, clients });
+    res.json({ giftcard, typePaiement, clients });
   } catch (err) {
     next(err);
   }
@@ -49,8 +45,8 @@ const giftcardInfoWithId = async (req, res, next) => {
 
 const destroyUserWithId = async (req, res, next) => {
   const { password } = req.body;
-  const { EpimeleiaAdminToken } = req.cookies;
-  const token = EpimeleiaAdminToken;
+  const { LorealAdminToken } = req.cookies;
+  const token = LorealAdminToken;
   const hashingOptions = {
     type: argon2.argon2id,
     memoryCost: 19 * 2 ** 10 /* 19 Mio en kio (19 * 1024 kio) */,
@@ -66,10 +62,7 @@ const destroyUserWithId = async (req, res, next) => {
   // Initialisation de la tentative de suppression de données
   // Verification du token
   try {
-    console.warn(
-      Date(),
-      ` | Tentative de suppression de données depuis IP | ${ip}`
-    );
+    console.warn(Date(), ` | Attempt to delete data from IP | ${ip}`);
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const { email, admin } = decodedToken;
 
@@ -89,7 +82,7 @@ const destroyUserWithId = async (req, res, next) => {
           // Verification de l'existence de l'utilisateur à supprimer
           const client = await tables.client.read(req.params.id);
           if (client === null || client === undefined) {
-            throw new Error("Le client n'existe pas");
+            throw new Error("The customer does not exist");
           } else {
             // Suppression des données
 
@@ -99,19 +92,15 @@ const destroyUserWithId = async (req, res, next) => {
 
             // and finish by deleting the client
             await tables.client.delete(req.params.id);
-            res
-              .status(204)
-              .send({ message: "les données du client ont été supprimées" });
+            res.status(204).send({ message: "customer data has been deleted" });
             next();
           }
         }
-        throw new Error(
-          "Vous n'avez pas les droits pour supprimer les données"
-        );
+        throw new Error("You do not have the rights to delete the data");
       }
-      throw new Error("Mot de passe incorrect");
+      throw new Error("Wrong password");
     }
-    throw new Error("Vous n'êtes pas connecté");
+    throw new Error("Uou are not connected");
   } catch (err) {
     next(err);
   }

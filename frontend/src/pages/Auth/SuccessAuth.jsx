@@ -5,7 +5,7 @@ import ScrollToTop from "../ResetScrollOnPage";
 
 export default function SuccessLogIn() {
   setTimeout(() => {
-    window.location.href = "/admin";
+    window.location.href = "/home";
   }, 3800);
   return (
     <div className="SuccessLogIn">
@@ -18,7 +18,7 @@ export default function SuccessLogIn() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Connexion en cours</h1>
+          <h1>Login in progress</h1>
         </div>
       </div>
     </div>

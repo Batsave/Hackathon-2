@@ -5,18 +5,24 @@
 // Import the manager modules responsible for handling data operations on the tables
 const ClientManager = require("./models/ClientManager");
 const UserManager = require("./models/UserManager");
-const MassageManager = require("./models/MassageManager");
 const GiftCardManager = require("./models/GiftCardManager");
-const ForfaitManager = require("./models/ForfaitManager");
 const PaiementTypeManager = require("./models/PaiementTypeManager");
+const ProductsManager = require("./models/ProductsManager");
+const SalonsManager = require("./models/SalonsManager");
+const OrdersManager = require("./models/OrdersManager");
+const StylistsManager = require("./models/StylistsManager");
+const OrderLinesManager = require("./models/OrderLinesManager");
 
 const managers = [
   UserManager,
   ClientManager,
-  MassageManager,
   GiftCardManager,
-  ForfaitManager,
+  ProductsManager,
   PaiementTypeManager,
+  SalonsManager,
+  OrdersManager,
+  StylistsManager,
+  OrderLinesManager,
   // Add other managers here
 ];
 

@@ -3,7 +3,7 @@
     "dev": "nodemon index.js",
     "db:migrate": "node migrate.js",
     "db:seed": "node seed.js",
-    "start": "node index.js && node server.js",
+    "start": "node index.js",
     "test": "jest"
   },
   "dependencies": {

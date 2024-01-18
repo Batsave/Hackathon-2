@@ -15,7 +15,7 @@ const readWithId = async (req, res, next) => {
   console.info(req.body);
 
   try {
-    const productsList = await tables.products.readWithId(req.params.id);
+    const productsList = await tables.products.read(req.params.id);
     if (productsList == null) {
       res.sendStatus(404);
     } else {

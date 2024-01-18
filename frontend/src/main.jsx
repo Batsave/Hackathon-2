@@ -16,6 +16,7 @@ import Products from "./pages/Products/Products";
 import Orders from "./pages/Orders/Orders";
 
 import Chatbot from "./pages/Chatbot";
+import ProductDetails from "./pages/Products/ProductDetails";
 
 console.info(`
 ██╗      ██████╗ ██████╗ ███████╗ █████╗ ██╗         ██████╗ ██████╗ ██████╗ 
@@ -75,7 +76,10 @@ const router = createBrowserRouter([
         path: "/products",
         element: <Products />,
       },
-
+      {
+        path: "/products/:id",
+        element: <ProductDetails />,
+      },
       {
         path: "/orders",
         element: <Orders />,

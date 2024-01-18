@@ -1,5 +1,13 @@
 @import "../color-config.scss";
 
+.resultQuantity {
+  display: flex;
+  width: 100%;
+  font-weight: 500;
+  justify-content: start;
+  margin-bottom: 1rem;
+  margin-left: 5rem;
+}
 .Client_container {
   display: flex;
   flex-direction: column;
@@ -316,17 +324,11 @@
 
         color: $color-grey;
       }
-      .resultQuantity {
-        display: flex;
-        width: 100%;
-        justify-content: flex-end;
-        align-items: end;
 
-        &_value {
-          font-size: 0.9rem;
-          color: $color-black;
-          font-weight: 400;
-        }
+      &_value {
+        font-size: 0.9rem;
+        color: $color-black;
+        font-weight: 400;
       }
     }
 

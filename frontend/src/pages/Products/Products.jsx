@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
 import "../../scss/Products/products.scss";
+import "../../scss/Products/productID.scss";
 import Navigation from "../../components/NavigationBar";
 import NavigationPhone from "../../components/NavigationBarPhone";
 import ScrollToTop from "../ResetScrollOnPage";
 
 import mailError from "../../assets/LottieFiles/EmailError.json";
-import OrderListItem from "../../components/itemsList/ProductListItem";
+import ProductListItem from "../../components/itemsList/ProductListItem";
 
 export default function Clients() {
   // Stockage des informations de connexion
   // -----------------------------------------------------------------------------------------------
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   // Stockage des informations des clients
   // -----------------------------------------------------------------------------------------------
@@ -24,22 +25,23 @@ export default function Clients() {
   const [sortByProduct, setSortByProduct] = useState("");
   // Verification si l'utilisateur est connécté et si son token est toujours valide
   // -----------------------------------------------------------------------------------------------
+
   useEffect(() => {
     const getProductsList = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/product`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/product/`,
           {
             withCredentials: true,
           }
         );
-        setproductList(response.data);
+        await setproductList(response.data);
         setIsLoggedIn(true);
       } catch (error) {
         setIsLoggedIn(false);
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 3800);
+        // setTimeout(() => {
+        //   window.location.href = "/";
+        // }, 3800);
       }
     };
     getProductsList();
@@ -51,7 +53,10 @@ export default function Clients() {
     const filteredProducts = productList.filter(
       (product) =>
         product.productName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        product.brand.toLowerCase().includes(searchValue.toLowerCase())
+        product.brand.toLowerCase().includes(searchValue.toLowerCase()) ||
+        product.productCategory
+          .toLowerCase()
+          .includes(searchValue.toLowerCase())
     );
     setSearchQuantity(
       searchValue.length === 0
@@ -81,12 +86,6 @@ export default function Clients() {
     return null;
   }
 
-  if (isLoading) {
-    return null;
-  }
-  const generateImage =
-    "https://image.lexica.art/full_webp/d71f6921-7522-4a7b-b527-4504bb732715";
-
   if (!isLoggedIn) {
     return (
       <section>
@@ -97,7 +96,7 @@ export default function Clients() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Accès Impossible</h1>
+          <h1>Access denied</h1>
           <p className="message">
             {`
           Vous n'êtes pas autorisé(e) à acceder a cette page.  `}
@@ -108,30 +107,36 @@ export default function Clients() {
     );
   }
   return (
-    <main id="MainContent" className="clients_page">
+    <main id="MainContent" className="products_page">
       <Navigation />
       <NavigationPhone />
       <ScrollToTop />
-      <div className="clients_container">
+      <div className="product_container">
         <div className="logo_class" alt="logo" />
         <header className="banner_product">
+          <div className="banner_gold">
+            <p>
+              Explore the
+              <strong> Wild Code </strong> of beauty
+            </p>
+          </div>
           <div className="banner_black">
             <p>
-              RETROUVER-ICI VOS<strong> PRODUITS STARS </strong>
-              Réunis dans des sets exclusifs
+              FIND YOUR <strong> STAR PRODUCTS HERE </strong>
+              Brought together in exclusive sets
               <p>
-                DES MILLIERS D'ARTICLES A PRIX <strong>PRO</strong>
+                THOUSANDS OF ITEMS AT <strong>PRO PRICES</strong>
               </p>
             </p>
           </div>
         </header>
         <div className="products_container_filter">
-          <div className="clients_container_filter_box">
-            <form className="clients_container_filter_box_form">
+          <div className="products_container_filter_box">
+            <form className="products_container_filter_box_form">
               <input
                 type="text"
                 id="searchClient"
-                className="clients_container_filter_box_form_input"
+                className="products_container_filter_box_form_input"
                 placeholder=" search..."
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
@@ -141,9 +146,9 @@ export default function Clients() {
             <select
               value={sortByProduct}
               onChange={(e) => setSortByProduct(e.target.value)}
-              className="clients_container_filter_box_sort"
+              className="products_container_filter_box_sort"
             >
-              <option value="">Trier par...</option>
+              <option value="">Order by...</option>
               <option value="AtoZ">A à Z</option>
               <option value="ZtoA">Z à A</option>
             </select>
@@ -153,20 +158,17 @@ export default function Clients() {
           <p>{searchQuantity}</p>
         </div>
         {searchResult.length === 0 && searchValue !== "" ? (
-          <p className="ClientNotFound">
-            Aucun résultat ne correspond à votre recherche.
-          </p>
+          <p className="resultQuantity">no result found....</p>
         ) : null}
 
-        <div className="clients_container_list">
-          {searchResult.length !== 0 ? (
+        <div className="product_container_list">
+          {searchResult.length !== 1 ? (
             <>
               {searchResult.map((product) => (
-                <OrderListItem
+                <ProductListItem
                   className="products_container_list_item"
-                  key={product.id}
-                  id={product.id}
-                  generateImage={generateImage}
+                  key={product.productId}
+                  productId={product.productId}
                   brand={product.brand}
                   productName={product.productName}
                   productCategory={product.productCategory}
@@ -176,11 +178,10 @@ export default function Clients() {
           ) : (
             <div>
               {productList.map((product) => (
-                <OrderListItem
+                <ProductListItem
                   className="products_container_list_item"
                   key={product.id}
                   id={product.id}
-                  generateImage={generateImage}
                   brand={product.brand}
                 />
               ))}

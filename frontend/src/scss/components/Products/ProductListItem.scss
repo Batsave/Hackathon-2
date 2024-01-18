@@ -2,25 +2,35 @@
 /* prettier-ignore */
 @import "../../color-config.scss";
 
-.clientCard_value_fullname {
+.productCard_value_fullname {
   text-align: center;
-  background-color: $color-black;
-  border-radius: 0px 0px 10px 10px;
-  color: #ffd277;
-  height: 1.5rem;
-  text-shadow: 1px 1px #946609;
-}
-
-.productCard_value_brand {
-  text-align: center;
-  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
   background-color: $color-black;
   border-radius: 10px 10px 0px 0px;
-  color: white;
+  color: $color-light;
+  height: 1.8rem;
 }
 
-.clientImage {
+.position_image {
   width: 200px;
+  background: url("https://m.media-amazon.com/images/I/511eF4nIB2L._AC_SL1500_.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 5rem;
+  background-position: center;
   height: 300px;
   border-radius: 6px;
+}
+.productCard_value_name {
+  text-align: center;
+  font-weight: 600;
+  margin-top: -2rem;
+}
+.productCard_value_category {
+  text-align: center;
+  border: 0.5px solid $color-black;
+  border-radius: 0 0 12px 12px;
 }

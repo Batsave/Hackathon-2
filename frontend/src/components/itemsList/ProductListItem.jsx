@@ -1,44 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../../scss/components/Products/ProductListItem.scss";
+import { NavLink } from "react-router-dom";
 
-export default function ClientListItem({ id, nom, prenom, email, telephone }) {
+export default function ProductListItem({
+  productId,
+  brand,
+  productName,
+  productCategory,
+}) {
   function handleClick() {
-    window.location.href = `/products/${id}`;
+    window.location.href = `/products/${productId}`;
   }
-
   return (
-    <div className="clientCard">
-      <div className="clientCard_value">
-        <p className="clientCard_value_fullname">
-          {prenom} {nom}
-        </p>
+    <NavLink onClick={() => handleClick()} className="productCard">
+      <div className="productCard_value">
+        <p className="productCard_value_fullname">{brand}</p>
+        <div className="position_image"> </div>
         <div className="clientCard_value_infos">
-          <p className="clientCard_value_infos_email">{email}</p>
-          <p className="clientCard_value_infos_phone">{telephone}</p>
+          <p className="productCard_value_name">{productName}</p>
+          <p className="productCard_value_category">{productCategory}</p>
         </div>
       </div>
-
-      <div className="clientCard_value_btns">
-        <button type="button" className="clientCard_value_btns_email">
-          <p className="icoEmail" /> Email
-        </button>
-        <button
-          type="button"
-          className="clientCard_value_btns_modifier"
-          onClick={() => handleClick()}
-        >
-          Voir Plus
-        </button>
-      </div>
-    </div>
+    </NavLink>
   );
 }
 
-ClientListItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  nom: PropTypes.string.isRequired,
-  prenom: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  telephone: PropTypes.string.isRequired,
+ProductListItem.propTypes = {
+  productId: PropTypes.string.isRequired,
+  productName: PropTypes.string.isRequired,
+  brand: PropTypes.string.isRequired,
+  productCategory: PropTypes.string.isRequired,
 };

@@ -1,4 +1,5 @@
 // Load the express module to create a web application
+const path = require("path");
 
 const express = require("express");
 
@@ -111,8 +112,14 @@ app.use(express.static(reactBuildPath));
 
 // Redirect unhandled requests to the react index file
 
-app.get("*", (req, res) => {
-  res.sendFile(`${reactBuildPath}/index.html`);
+app.use("*", (req, res) => {
+  if (req.originalUrl.includes("assets")) {
+    res.sendFile(
+      path.resolve(__dirname, `../../frontend/dist/${req.originalUrl}`)
+    );
+  } else {
+    res.sendFile(path.resolve(__dirname, `../../frontend/dist/index.html`));
+  }
 });
 
 /* ************************************************************************* */

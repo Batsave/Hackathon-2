@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
+import { Link } from "react-router-dom";
 
 import "../scss/home.scss";
 import "../scss/pages.scss";
-
+import LorIA from "./Chatbot";
 import Navigation from "../components/NavigationBar";
 import NavigationPhone from "../components/NavigationBarPhone";
 import ResetScrollOnPage from "./ResetScrollOnPage";
@@ -16,20 +17,19 @@ export default function Admin() {
   // -----------------------------------------------------------------------------------------------
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [ordersList, setOrdersList] = useState([]);
 
   useEffect(() => {
-    const CheckAuth = async () => {
+    const GetData = async () => {
       try {
-        const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api/checktoken`,
-          "CheckMePlease",
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/order`,
           {
             withCredentials: true,
           }
         );
-        if (response.data.message === "OK") {
-          setIsLoggedIn(true);
-        } else throw new Error("Accès refusé");
+        setOrdersList(response.data);
+        setIsLoggedIn(true);
       } catch (error) {
         setIsLoggedIn(false);
         setTimeout(() => {
@@ -39,8 +39,19 @@ export default function Admin() {
       setIsLoading(false);
     };
 
-    CheckAuth();
+    GetData();
   }, []);
+
+  const newformat = (date, format) => {
+    const pad = (value) => (value < 10 ? `0${value}` : value);
+    const map = {
+      mm: pad(date.getMonth() + 1),
+      dd: pad(date.getDate()),
+      yyyy: date.getFullYear(),
+    };
+
+    return format.replace(/mm|dd|yyyy/gi, (matched) => map[matched]);
+  };
 
   // logo de chargement et redirection si l'utilisateur n'est pas connecté
   // -----------------------------------------------------------------------------------------------
@@ -93,8 +104,45 @@ export default function Admin() {
         </div>
         <div className="admin_container_data">
           <div className="admin_container_data_recommanded">
-            <h2 className="categoryTitle">Last orders</h2>
-            <div className="list_of_product" />
+            <div className="last_order_header">
+              <h2 className="last_order_header_title">Last orders</h2>
+              <Link to="/orders" className="SeeMore">
+                See more
+              </Link>
+            </div>
+
+            <div className="last_order_product">
+              {ordersList.slice(0, 3).map((order) => (
+                <div className="order" key={order.orderId}>
+                  <div className="order_infos">
+                    <p className="order_infos_date">
+                      {newformat(new Date(order.orderDateTime), "yyyy/mm/dd")}
+                    </p>
+                    <p className="order_infos_number">
+                      Order n° {order.orderId}
+                    </p>
+                  </div>
+                  <div className="order_values">
+                    <div className="order_values_price line">
+                      <p className="title">Price</p>
+                      <p className="value">{order.totalAmount} €</p>
+                    </div>
+                    <div className="order_values_price line qtproduct">
+                      <p className="title">Qt Products</p>
+                      <p className="value">{order.totalQuantity}</p>
+                    </div>
+                    <div className="order_values_price">
+                      <Link
+                        className="order_values_price_button"
+                        to={`/orders/${order.orderId}`}
+                      >
+                        +
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="admin_container_data_recommanded">
             <h2 className="categoryTitle">Recommanded products</h2>
@@ -102,6 +150,7 @@ export default function Admin() {
           </div>
         </div>
       </div>
+      <LorIA />
     </main>
   );
 }

@@ -4,7 +4,7 @@ import LogInProgress from "../../assets/LottieFiles/LogIn.json";
 import ScrollToTop from "../ResetScrollOnPage";
 
 export default function SuccessLogOut() {
-  console.info(`Déconnexion Reussie`);
+  console.info(`Disconnected Successfully`);
   setTimeout(() => {
     window.location.href = "/";
   }, 3800);

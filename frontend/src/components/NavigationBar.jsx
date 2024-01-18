@@ -75,6 +75,12 @@ export default function Header() {
             </NavLink>
             <hr className="Separate" />
           </div>
+          <div className="Navigation_main_container_orders">
+            <NavLink to="/orders" className="linkTo" activeClassName="active">
+              <div className="orders_NavIcon NavIco" />
+              <span>Orders</span>
+            </NavLink>
+          </div>
           <div className="Navigation_main_container_logout">
             <button
               type="button"

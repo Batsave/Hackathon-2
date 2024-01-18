@@ -16,7 +16,7 @@ import SuccessAuth from "./pages/Auth/SuccessAuth";
 import SuccessLogOut from "./pages/Auth/SuccessLogOut";
 import CreateAccount from "./pages/Auth/[NOTUSE]CreateAccount";
 
-import Clients from "./pages/Clients/Clients";
+import Orders from "./pages/Clients/Clients";
 import ClientId from "./pages/Clients/ClientId";
 import AddClient from "./pages/Clients/AddClient";
 import DeleteClient from "./pages/Clients/DeleteClient";
@@ -29,7 +29,6 @@ import DeleteGiftcard from "./pages/Giftcards/DeleteGiftcard";
 import SuccessDeleteGiftcard from "./pages/Giftcards/SuccessDelete";
 import ProductDetails from "./pages/ProductDetails";
 import Chatbot from "./pages/Chatbot";
-
 
 console.info(`
 ██╗      ██████╗ ██████╗ ███████╗ █████╗ ██╗         ██████╗ ██████╗ ██████╗ 
@@ -106,10 +105,6 @@ const router = createBrowserRouter([
 
       // Clients Section
       {
-        path: "/clients",
-        element: <Clients />,
-      },
-      {
         path: "/clients/add",
         element: <AddClient />,
       },
@@ -146,6 +141,10 @@ const router = createBrowserRouter([
       {
         path: "/success-delete-giftcard",
         element: <SuccessDeleteGiftcard />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
       },
       {
         path: "/productDetails",

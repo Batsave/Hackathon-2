@@ -10,10 +10,18 @@ class OrdersManager extends AbstractManager {
     return rows;
   }
 
-  async read(id) {
+  async read(stylistId) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} where id = ?`,
-      [id]
+      `SELECT * FROM ${this.table} where stylistId=?`,
+      [stylistId]
+    );
+    return rows;
+  }
+
+  async readWithSalonId(salonId) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} where salonId=?`,
+      [salonId]
     );
     return rows;
   }

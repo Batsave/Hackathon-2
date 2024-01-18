@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
 import { Link } from "react-router-dom";
-
 import "../scss/home.scss";
 import "../scss/pages.scss";
 import LorIA from "./Chatbot";

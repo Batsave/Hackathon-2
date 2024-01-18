@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../scss/components/GiftCard/GiftcardListItem.scss";
 
 export default function GiftCardList({
   id,

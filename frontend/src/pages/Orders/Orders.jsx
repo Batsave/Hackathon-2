@@ -15,7 +15,6 @@ export default function Orders() {
         .get(`${import.meta.env.VITE_BACKEND_URL}/api/order`, {
           withCredentials: true,
         })
-
         .then((res) => {
           setOrders(res.data);
         });
@@ -24,7 +23,6 @@ export default function Orders() {
     }
     console.info(orders);
   }, []);
-
   return (
     <main id="MainContent">
       <Navigation />

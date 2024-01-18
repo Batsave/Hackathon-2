@@ -117,32 +117,31 @@ export default function Clients() {
           <div className="banner_gold">
             <p>
               Explore the
-              <strong> Wild Code </strong> of beauty
+              <strong> Wild Code </strong> of beauty.
             </p>
           </div>
           <div className="banner_black">
             <p>
               FIND YOUR <strong> STAR PRODUCTS HERE </strong>
-              Brought together in exclusive sets
+              Brought together in exclusive sets.
               <p>
-                THOUSANDS OF ITEMS AT <strong>PRO PRICES</strong>
+                THOUSANDS OF ITEMS AT <strong>PRO PRICES.</strong>
               </p>
             </p>
           </div>
         </header>
         <div className="products_container_filter">
+          <form className="products_container_filter_box_form">
+            <input
+              type="text"
+              id="searchClient"
+              className="products_container_filter_box_form_input"
+              placeholder=" search..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </form>
           <div className="products_container_filter_box">
-            <form className="products_container_filter_box_form">
-              <input
-                type="text"
-                id="searchClient"
-                className="products_container_filter_box_form_input"
-                placeholder=" search..."
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </form>
-            <p>Brand: </p>
             <select
               value={sortByProduct}
               onChange={(e) => setSortByProduct(e.target.value)}

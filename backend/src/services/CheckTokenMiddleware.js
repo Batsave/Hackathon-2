@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+
 const tables = require("../tables");
 
 const currentTime = new Date();
@@ -6,21 +7,20 @@ const currentTime = new Date();
 const checktoken = async (req, res, next) => {
   try {
     if (!req.cookies.LorealAdminToken) {
+      console.warn("rekt no token");
       throw new Error("Access denied");
     } else {
       const { LorealAdminToken } = req.cookies;
+
       const token = LorealAdminToken;
-
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      const { email, stylistId } = decodedToken;
+      const checkUserToken = await tables.users.checkToken(email);
 
-      const { email, userId, admin } = decodedToken;
-      const checkUserToken = await tables.users.checkToken(token);
       if (
         checkUserToken.length === 1 &&
         checkUserToken[0].email === email &&
-        checkUserToken[0].admin === 1 &&
-        checkUserToken[0].id === userId &&
-        admin === 1
+        checkUserToken[0].stylistId === stylistId
       ) {
         next();
       } else {

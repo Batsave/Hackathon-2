@@ -10,12 +10,12 @@ class StylistsManager extends AbstractManager {
     return rows;
   }
 
-  async readWithId(id) {
+  async readWithId(stylistId) {
     const [rows] = await this.database.query(
-      `SELECT * from ${this.table} WHERE id = ?`,
-      [id]
+      `SELECT * from ${this.table} WHERE stylistId = ?`,
+      [stylistId]
     );
-    return rows[0];
+    return rows;
   }
 
   async create(country, firstName, lastName, stylistRole) {

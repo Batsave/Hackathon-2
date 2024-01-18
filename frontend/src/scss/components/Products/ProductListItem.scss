@@ -1,0 +1,26 @@
+/* eslint-disable */
+/* prettier-ignore */
+@import "../../color-config.scss";
+
+.clientCard_value_fullname {
+  text-align: center;
+  background-color: $color-black;
+  border-radius: 0px 0px 10px 10px;
+  color: #ffd277;
+  height: 1.5rem;
+  text-shadow: 1px 1px #946609;
+}
+
+.productCard_value_brand {
+  text-align: center;
+  height: 1.5rem;
+  background-color: $color-black;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+}
+
+.clientImage {
+  width: 200px;
+  height: 300px;
+  border-radius: 6px;
+}

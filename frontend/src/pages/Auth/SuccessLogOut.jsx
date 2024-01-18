@@ -4,7 +4,7 @@ import LogInProgress from "../../assets/LottieFiles/LogIn.json";
 import ScrollToTop from "../ResetScrollOnPage";
 
 export default function SuccessLogOut() {
-  console.info(`Déconnexion Reussie`);
+  console.info(`Disconnected Successfully`);
   setTimeout(() => {
     window.location.href = "/";
   }, 3800);
@@ -19,7 +19,7 @@ export default function SuccessLogOut() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Déconnexion en cours..</h1>
+          <h1>Logout in progress</h1>
         </div>
       </div>
     </div>

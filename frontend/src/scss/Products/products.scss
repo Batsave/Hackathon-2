@@ -1,0 +1,129 @@
+/* eslint-disable */
+/* prettier-ignore */
+@import "../color-config.scss";
+
+@keyframes translateVertical {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4rem);
+    transform: translateX(50rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes translateHorizontal {
+  0% {
+    transform: translateX(2rem);
+  }
+  50% {
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.clients_container_list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  gap: 3rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.logo_class {
+  width: 210px;
+  height: 200px;
+  margin: auto;
+}
+
+.clientCard {
+  background: #ffffff;
+  font-family: $font;
+  border-radius: 12px;
+  box-shadow: 1px 1px 10px 0.1px rgba(0, 0, 0, 0.33);
+  transition: 0.5s;
+}
+
+.clientCard:hover {
+  transform: scale(0.98);
+  transition: 0.5s;
+}
+
+.clientCard_value {
+  display: flex;
+  flex-direction: column;
+}
+
+.border_bottom {
+  height: 100px;
+  background: $color-black;
+}
+
+.clients_page {
+  width: 100%;
+}
+
+.products_container_filter {
+  display: flex;
+  justify-content: end;
+}
+
+.clients_container_filter_box_form_input {
+  width: 12rem;
+  height: 2rem;
+  border-radius: 6px;
+  border: none;
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 1px 1px 6px 1px rgb(177, 175, 175);
+}
+
+.clients_container_filter_box_sort {
+  width: 6rem;
+  height: 2rem;
+  border-radius: 6px;
+  box-shadow: 1px 1px 6px 1px rgb(214, 214, 214);
+}
+
+.banner_product {
+  background: linear-gradient(
+    to left,
+    #fbf5b7,
+    #aa771c,
+    #bf953f,
+    #fcf6ba,
+    #b38728
+  );
+  margin: -2rem;
+  overflow: hidden;
+  max-height: 4rem;
+  box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+.banner_product p {
+  color: white;
+  font-family: $font;
+  width: 40rem;
+  margin-left: 2rem;
+  animation: translateVertical 10s ease infinite;
+}
+
+.banner_black {
+  background: $color-black;
+  text-align: center;
+  height: 20rem;
+  width: 50rem;
+  display: flex;
+  overflow: hidden;
+}
+
+.logo_class {
+  background: url("/assets/svg/favicon_black.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

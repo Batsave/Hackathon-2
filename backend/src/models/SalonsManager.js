@@ -10,6 +10,14 @@ class SalonsManager extends AbstractManager {
     return rows;
   }
 
+  async readWithStylistId(stylistId) {
+    const [results] = await this.database.query(
+      `SELECT * FROM ${this.table} where stylistId=?`,
+      [stylistId]
+    );
+    return results;
+  }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
 

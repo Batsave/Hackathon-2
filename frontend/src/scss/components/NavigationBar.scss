@@ -11,7 +11,9 @@
   background-color: $color-black;
   color: $color-white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    width 0.2s ease-in-out;
   overflow: hidden;
 
   @media screen and (max-width: 680px) {
@@ -35,18 +37,38 @@
       justify-content: center;
 
       &_logo {
-        width: 52px;
-        height: 52px;
-        margin-bottom: 1rem;
+        width: 90px;
+        height: 60px;
+        margin-bottom: 0.1rem;
         background-image: url("/assets/svg/favicon.svg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-        border-radius: 100%;
-        transition: all 0.15s ease-in-out;
+        transition: all 0.2s ease-in-out;
 
+        &:active {
+          width: 82px;
+          height: 82px;
+        }
         &:hover {
-          transform: scale(1.2);
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 6px rgba($color-white, 0.3));
+        }
+      }
+      .logoOpen {
+        width: 280px;
+        height: 120px;
+        margin-bottom: 0.1rem;
+        background-image: url("/assets/svg/favicon.svg");
+
+        transition: all 0.2s ease-in-out;
+
+        &:active {
+          width: 82px;
+          height: 82px;
+        }
+        &:hover {
+          transform: scale(1.1);
           filter: drop-shadow(0 0 6px rgba($color-white, 0.3));
         }
       }
@@ -81,7 +103,7 @@
           display: flex;
           align-items: center;
           margin: auto;
-          width: 100%;
+          width: 320px;
           height: 40px;
           opacity: 40%;
 
@@ -89,6 +111,11 @@
             opacity: 100%;
           }
 
+          .LinkName {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-left: 37px;
+          }
           .NavIco {
             display: flex;
             width: 26px;
@@ -96,37 +123,96 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            margin: 0 auto;
+            margin: 0 0 0 37px;
           }
-          .admin_NavIcon {
+          .home_NavIcon {
             background-image: url("/assets/svg/icons/home.svg");
           }
-          .client_NavIcon {
+          .account_NavIcon {
             background-image: url("/assets/svg/icons/clients.svg");
           }
-          .giftcard_NavIcon {
-            background-image: url("/assets/svg/icons/giftcards.svg");
+          .products_NavIcon {
+            background-image: url("/assets/svg/icons/products.svg");
           }
-          .email_NavIcon {
-            background-image: url("/assets/svg/icons/email.svg");
+          .order_NavIcon {
+            background-image: url("/assets/svg/icons/order.svg");
           }
         }
+
         .active {
           border-left: solid 3px $color-white;
           border-right: solid 3px rgba(0, 0, 0, 0);
           opacity: 100%;
           .NavIco {
-            padding-right: 8px;
+            margin: 0 0 0 34px;
           }
         }
       }
       &_logout {
         display: flex;
         flex-direction: column;
-
         width: 100%;
-
         gap: 1.4rem;
+
+        .OpenBar {
+          width: 26px;
+          height: 26px;
+          margin-left: 37px;
+          background: none;
+          background-position: left;
+          background-repeat: no-repeat;
+          background-size: contain;
+          border: none;
+          opacity: 60%;
+          cursor: pointer;
+          transition: transform 0.1s ease-in-out;
+          color: $color-white;
+          font-size: 1.1rem;
+
+          &:hover {
+            opacity: 100%;
+            transform: scale(1.1);
+          }
+
+          &_icon {
+            width: 26px;
+            height: 26px;
+            background-image: url("/assets/svg/icons/navhover.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+        }
+
+        .CloseBar {
+          width: 26px;
+          height: 26px;
+          margin-left: 37px;
+          background: none;
+          background-position: left;
+          background-repeat: no-repeat;
+          background-size: contain;
+          border: none;
+          opacity: 60%;
+          cursor: pointer;
+          transition: transform 0.1s ease-in-out;
+          color: $color-white;
+          font-size: 1.1rem;
+
+          &:hover {
+            opacity: 100%;
+            transform: scale(1.1);
+          }
+
+          &_icon {
+            width: 26px;
+            height: 26px;
+            background-image: url("/assets/svg/icons/navhoverclose.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+        }
 
         &_btn {
           width: 26px;
@@ -140,10 +226,17 @@
           opacity: 60%;
           cursor: pointer;
           transition: transform 0.1s ease-in-out;
+          color: $color-white;
+          font-size: 1.1rem;
+          gap: 37px;
 
           &:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             opacity: 100%;
+          }
+          .TextGapDeconnexion {
+            width: max-content;
+            margin-left: 64px;
           }
         }
 
@@ -156,4 +249,7 @@
       }
     }
   }
+}
+.Open {
+  width: 320px;
 }

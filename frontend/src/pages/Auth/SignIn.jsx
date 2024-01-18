@@ -18,7 +18,7 @@ export default function SignIn() {
       .then((res) => {
         if (res.data.message === "OK") {
           console.info("Connexion Approuvée");
-          window.location.href = "/admin";
+          window.location.href = "/home";
         }
       });
   }, []);
@@ -102,7 +102,7 @@ export default function SignIn() {
         document.getElementById("successLog").innerText =
           "Authentification en cours...";
 
-        localStorage.setItem("EpimeleiaAdminToken", response.data.token);
+        localStorage.setItem("LorealAdminToken", response.data.token);
 
         setTimeout(() => {
           window.location.href = "/success-auth";
@@ -117,7 +117,9 @@ export default function SignIn() {
   return (
     <div className="SignInMain">
       <ScrollToTop />
-
+      <video className="SignIn_container_video" autoPlay muted loop>
+        <source src="/assets/mp4/sign-in-loop.mp4" type="video/mp4" />^
+      </video>
       <div className="SignIn_container ">
         <img
           src="assets/svg/favicon.svg"
@@ -125,12 +127,12 @@ export default function SignIn() {
           className="SignIn_container_logo_ico"
         />
         <div className="SignIn_container_title">
-          <h1>Connexion</h1>
+          <h1>Let's connect</h1>
         </div>
         <form className="SignIn_container_form">
           <div className="SignIn_container_form_box">
             <div className="form_placeholder">
-              <p className="form_placeholder_title">Email</p>
+              <p className="form_placeholder_title">Mail</p>
               <input
                 className="form_placeholder_input"
                 name="email"
@@ -144,7 +146,7 @@ export default function SignIn() {
               />
             </div>
             <div className="form_placeholder form_final">
-              <p className="form_placeholder_title">Mot de Passe</p>
+              <p className="form_placeholder_title">Password</p>
               <input
                 className="form_placeholder_input"
                 name="password"
@@ -168,7 +170,7 @@ export default function SignIn() {
               onClick={handleSubmit}
               className="signIn"
             >
-              Se connecter
+              Sign in
             </button>
           </div>
           <p className="error_container" id="errorEmail" />

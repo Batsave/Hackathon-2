@@ -8,10 +8,10 @@ const UserManager = require("./models/UserManager");
 const GiftCardManager = require("./models/GiftCardManager");
 const PaiementTypeManager = require("./models/PaiementTypeManager");
 const ProductsManager = require("./models/ProductsManager");
-const SalonsManager = require("./models/SalonsManager");
 const OrdersManager = require("./models/OrdersManager");
 const StylistsManager = require("./models/StylistsManager");
 const OrderLinesManager = require("./models/OrderLinesManager");
+const SalonsManager = require("./models/SalonsManager");
 
 const managers = [
   UserManager,
@@ -19,10 +19,10 @@ const managers = [
   GiftCardManager,
   ProductsManager,
   PaiementTypeManager,
-  SalonsManager,
   OrdersManager,
   StylistsManager,
   OrderLinesManager,
+  SalonsManager,
   // Add other managers here
 ];
 

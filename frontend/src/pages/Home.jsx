@@ -17,9 +17,7 @@ export default function Admin() {
   // -----------------------------------------------------------------------------------------------
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [LorIAState, setLorIAState] = useState(false);
   const [ordersList, setOrdersList] = useState([]);
-  console.info(ordersList);
 
   useEffect(() => {
     const GetData = async () => {
@@ -80,17 +78,6 @@ export default function Admin() {
         </div>
       </section>
     ); // or render a login component
-  }
-
-  if (LorIAState) {
-    return (
-      <main id="MainContent">
-        <Navigation onClickFunction={() => setLorIAState(!LorIAState)} />
-        <NavigationPhone />
-        <ResetScrollOnPage />
-        <LorIA />;
-      </main>
-    );
   }
 
   return (

@@ -13,19 +13,30 @@ html {
   height: 80%; // Augmente la hauteur du container
   background-color: #fff;
   border: 1px solid #ccc;
-  box-shadow: 0 0px 16px rgba($color-black, 0.4);
+  box-shadow: 0px 0px 200px 35px rgba($color-black, 1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   color: black;
   padding: 1rem;
+  z-index: 99;
   background: linear-gradient(to bottom right, #f7f7f7, #e6e6e6);
+
+  @media screen and (max-width: 680px) {
+    width: 100%;
+    height: 90dvh;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+  }
 }
 
 .message-area {
   flex-grow: 1;
   overflow-y: auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  border-bottom: solid 1px rgba($color-black, 0.1);
+  filter: drop-shadow(0px 0px 8px rgba($color-black, 0.1));
 }
 
 .message {
@@ -43,7 +54,7 @@ html {
 .input-area {
   display: flex;
   padding: 10px;
-
+  filter: drop-shadow(0px 0px 8px rgba($color-black, 0.1));
   position: absolute;
   bottom: 0;
   left: 0;

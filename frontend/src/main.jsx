@@ -27,7 +27,9 @@ import AddGiftcard from "./pages/Giftcards/AddGiftcard";
 import GiftcardID from "./pages/Giftcards/GiftcardId";
 import DeleteGiftcard from "./pages/Giftcards/DeleteGiftcard";
 import SuccessDeleteGiftcard from "./pages/Giftcards/SuccessDelete";
+import ProductDetails from "./pages/ProductDetails";
 import Chatbot from "./pages/Chatbot";
+
 
 console.info(`
 ██╗      ██████╗ ██████╗ ███████╗ █████╗ ██╗         ██████╗ ██████╗ ██████╗ 
@@ -144,6 +146,10 @@ const router = createBrowserRouter([
       {
         path: "/success-delete-giftcard",
         element: <SuccessDeleteGiftcard />,
+      },
+      {
+        path: "/productDetails",
+        element: <ProductDetails />,
       },
       {
         path: "/chatbot",

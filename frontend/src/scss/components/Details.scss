@@ -3,5 +3,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+}
+
+.brand {
+}
+
+.picture {
+  background-color: gray;
+  width: 60px;
+  height: 80px;
+}
+
+.img_Container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px 10px;
+  margin-top: 2rem;
+}
+
+.description {
+  width: 100vw;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.product_and_add_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
 }

@@ -1,0 +1,141 @@
+@import "./color-config.scss";
+
+.admin_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px;
+  gap: 1rem;
+  margin: 0rem auto 0;
+
+  &_infos {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 1rem;
+
+    &_banner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      justify-content: center;
+      background-image: url("/assets/webp/homebanner_desktop_metaldetox_md_packshot_2023.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 480px;
+      padding: 1rem;
+      filter: drop-shadow(0px 0px 12px rgba($color-black, 0.25));
+
+      @media screen and (max-width: 680px) {
+        background-position: 30%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 500px;
+      }
+
+      .banner_box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 400px;
+        height: max-content;
+        padding: 2rem 1rem;
+        background-color: rgba($color-light, 1);
+        overflow: hidden;
+        gap: 0.2rem;
+        filter: drop-shadow(0px 0px 12px rgba($color-black, 0.1));
+
+        @media screen and (max-width: 680px) {
+          width: 100%;
+          height: max-content;
+          padding: 1rem;
+        }
+        &_new {
+          display: flex;
+          width: max-content;
+          padding: 0.1rem 0.5rem;
+          font-size: 1rem;
+          font-weight: 700;
+          color: $color-light;
+          background-color: rgba($color-black, 1);
+          @media screen and (max-width: 680px) {
+            font-size: 0.8rem;
+          }
+        }
+        &_name {
+          display: flex;
+          width: max-content;
+          font-size: 1.7rem;
+          font-weight: 500;
+          color: $color-black;
+          background-color: rgba($color-light, 1);
+          @media screen and (max-width: 680px) {
+            font-size: 1.2rem;
+          }
+        }
+        &_title {
+          font-size: 2rem;
+          font-weight: 800;
+          color: $color-black;
+          @media screen and (max-width: 680px) {
+            font-size: 1.5rem;
+          }
+        }
+        &_button {
+          display: flex;
+          align-self: flex-start;
+          width: max-content;
+          height: fit-content;
+          padding: 0.8rem 1rem;
+          background-color: rgba($color-black, 0);
+          border-radius: 2rem;
+          cursor: pointer;
+
+          font-size: 1rem;
+          font-weight: 700;
+          color: $color-black;
+
+          @media screen and (max-width: 680px) {
+            font-size: 0.8rem;
+          }
+
+          &:hover {
+            background-color: rgba($color-black, 0.1);
+          }
+        }
+      }
+    }
+  }
+  &_data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+
+    &_recommanded {
+      display: flex;
+      flex-direction: column;
+      background-color: rgba($color-light, 1);
+      width: 100%;
+      height: 320px;
+      padding: 1rem;
+      filter: drop-shadow(0px 0px 12px rgba($color-black, 0.25));
+
+      .categoryTitle {
+        display: flex;
+        width: max-content;
+
+        background-color: rgba($color-black, 1);
+
+        color: $color-light;
+        padding: 0.5rem 1rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

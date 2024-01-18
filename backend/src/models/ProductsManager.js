@@ -6,7 +6,9 @@ class ProductsManager extends AbstractManager {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} LIMIT 50`
+    );
     return rows;
   }
 

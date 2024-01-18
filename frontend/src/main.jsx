@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./pages/404";
 
-import Admin from "./pages/Admin";
+import Home from "./pages/Home";
 
 import EmailManual from "./pages/Email/EmailManual";
 import EmailSent from "./pages/EmailSent";
@@ -28,6 +28,8 @@ import GiftcardID from "./pages/Giftcards/GiftcardId";
 import DeleteGiftcard from "./pages/Giftcards/DeleteGiftcard";
 import SuccessDeleteGiftcard from "./pages/Giftcards/SuccessDelete";
 import ProductDetails from "./pages/ProductDetails";
+import Chatbot from "./pages/Chatbot";
+
 
 console.info(`
 ██╗      ██████╗ ██████╗ ███████╗ █████╗ ██╗         ██████╗ ██████╗ ██████╗ 
@@ -98,8 +100,8 @@ const router = createBrowserRouter([
 
       // Admin Section
       {
-        path: "/admin",
-        element: <Admin />,
+        path: "/home",
+        element: <Home />,
       },
 
       // Clients Section
@@ -148,6 +150,10 @@ const router = createBrowserRouter([
       {
         path: "/productDetails",
         element: <ProductDetails />,
+      },
+      {
+        path: "/chatbot",
+        element: <Chatbot />,
       },
     ],
   },

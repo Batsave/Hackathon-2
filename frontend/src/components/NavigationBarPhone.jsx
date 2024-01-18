@@ -17,10 +17,10 @@ export default function Header() {
       )
       .then((res) => {
         if (res.data.message === "OK") {
-          console.info("Déconnexion en cours...");
+          console.info("Log Out in progress...");
           window.location.href = "/logout";
         } else {
-          console.info("Impossible de se déconnecter");
+          console.info("Log Out impossible");
         }
       });
   }
@@ -55,25 +55,21 @@ export default function Header() {
         <div className="NavigationPhone_main_container">
           <div className="NavigationPhone_main_container_menu">
             <hr className="Separate" />
-            <NavLink to="/admin" className="linkTo" activeclassname="active">
-              <div className="admin_NavIcon NavIco" />
-              <p className="title">Admin</p>
+            <NavLink to="/home" className="linkTo" activeclassname="active">
+              <div className="home_NavIcon NavIco" />
+              <p className="title">Home</p>
             </NavLink>
-            <NavLink to="/clients" className="linkTo" activeclassname="active">
-              <div className="client_NavIcon NavIco" />
-              <p className="title">Clients</p>
+            <NavLink to="/account" className="linkTo" activeclassname="active">
+              <div className="account_NavIcon NavIco" />
+              <p className="title">Account</p>
             </NavLink>
-            <NavLink
-              to="/giftcards"
-              className="linkTo"
-              activeclassname="active"
-            >
-              <div className="giftcard_NavIcon NavIco" />
-              <p className="title">Cartes Cadeau</p>
+            <NavLink to="/products" className="linkTo" activeclassname="active">
+              <div className="products_NavIcon NavIco" />
+              <p className="title">Products</p>
             </NavLink>
-            <NavLink to="/email" className="linkTo" activeclassname="active">
-              <div className="email_NavIcon NavIco" />
-              <p className="title">Emails</p>
+            <NavLink to="/orders" className="linkTo" activeclassname="active">
+              <div className="order_NavIcon NavIco" />
+              <p className="title">Orders</p>
             </NavLink>
             <hr className="Separate" />
           </div>
@@ -84,7 +80,7 @@ export default function Header() {
               onClick={handleLogOut}
             >
               <div className="LogOutBtn" />
-              <span className="LogOutTitle"> Déconnexion</span>
+              <span className="LogOutTitle"> Log Out</span>
             </button>
           </div>
         </div>

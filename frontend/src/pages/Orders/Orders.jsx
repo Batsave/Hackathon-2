@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LatestOrders from "../components/LatestOrders";
+import LatestOrders from "../../components/LatestOrders";
+
+import Navigation from "../../components/NavigationBar";
+import NavigationPhone from "../../components/NavigationBarPhone";
+import ResetScrollOnPage from "../ResetScrollOnPage";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -22,8 +26,14 @@ export default function Orders() {
   }, []);
 
   return (
-    <div>
-      <LatestOrders orders={orders} />
-    </div>
+    <main id="MainContent">
+      <Navigation />
+      <NavigationPhone />
+      <ResetScrollOnPage />
+
+      <div>
+        <LatestOrders orders={orders} />
+      </div>
+    </main>
   );
 }

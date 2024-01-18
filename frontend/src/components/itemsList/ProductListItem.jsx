@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../scss/components/Clients/ClientListItem.scss";
+import "../../scss/components/Products/ProductListItem.scss";
 
 export default function ClientListItem({ id, nom, prenom, email, telephone }) {
   function handleClick() {
-    window.location.href = `/clients/${id}`;
+    window.location.href = `/products/${id}`;
   }
 
   return (

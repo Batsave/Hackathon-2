@@ -55,7 +55,9 @@ export default function Chatbot() {
               <div
                 // eslint-disable-next-line
                 key={index}
-                className={`message ${message.author === "user" ? "user-message" : "bot-message"}`}
+                className={`message ${
+                  message.author === "user" ? "user-message" : "bot-message"
+                }`}
               >
                 {message.content}
               </div>

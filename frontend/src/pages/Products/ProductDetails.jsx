@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 // import axios from "axios";
-import Details from "../components/details";
-import "../scss/ProductDetails.scss";
+import Details from "../../components/details";
+import "../../scss/ProductDetails.scss";
 
 function ProductDetails() {
   // const [ProductsList, setproductList] = useState([]);

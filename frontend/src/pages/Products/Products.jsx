@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
-import "../../scss/clients/clients.scss";
+import "../../scss/Products/products.scss";
 import Navigation from "../../components/NavigationBar";
 import NavigationPhone from "../../components/NavigationBarPhone";
 import ScrollToTop from "../ResetScrollOnPage";
 
 import mailError from "../../assets/LottieFiles/EmailError.json";
-import ClientListItem from "../../components/itemsList/ClientListItem";
+import OrderListItem from "../../components/itemsList/ProductListItem";
 
 export default function Clients() {
   // Stockage des informations de connexion
@@ -108,7 +108,7 @@ export default function Clients() {
     );
   }
   return (
-    <main className="clients_page">
+    <main id="MainContent" className="clients_page">
       <Navigation />
       <NavigationPhone />
       <ScrollToTop />
@@ -162,7 +162,7 @@ export default function Clients() {
           {searchResult.length !== 0 ? (
             <>
               {searchResult.map((product) => (
-                <ClientListItem
+                <OrderListItem
                   className="products_container_list_item"
                   key={product.id}
                   id={product.id}
@@ -176,7 +176,7 @@ export default function Clients() {
           ) : (
             <div>
               {productList.map((product) => (
-                <ClientListItem
+                <OrderListItem
                   className="products_container_list_item"
                   key={product.id}
                   id={product.id}

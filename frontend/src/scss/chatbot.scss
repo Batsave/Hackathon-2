@@ -5,28 +5,24 @@ html {
 }
 
 .chatbot-container {
+  position: fixed;
+  bottom: 10%; // Réduit la marge en bas pour agrandir le container
+  right: 10%; // Réduit la marge à droite pour agrandir le container
+  width: 80%; // Augmente la largeur du container
+  height: 80%; // Augmente la hauteur du container
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: 300px;
-  margin: auto;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #f4f4f4;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  bottom: 70px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
-  z-index: 2;
+  color: black;
 }
 
 .message-area {
   flex-grow: 1;
   overflow-y: auto;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .message {

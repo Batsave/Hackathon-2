@@ -3,10 +3,10 @@ import io from "socket.io-client";
 import "../scss/chatbot.scss";
 
 const socket = io("http://localhost:5000");
-export default function Chatbot() {
+/* eslint-disable-next-line */
+export default function Chatbot({ isVisible }) {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
-  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -40,20 +40,13 @@ export default function Chatbot() {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <>
-      <button
-        className="button-chatbot"
-        type="button"
-        onClick={() => setIsChatbotVisible(!isChatbotVisible)}
-      >
-        {isChatbotVisible ? "Close Chat" : "Open Chat"}
-      </button>
-      {isChatbotVisible && (
+    <div>
+      {isVisible && (
         <div className="chatbot-container">
           <div className="message-area">
             {messages.map((message, index) => (
               <div
-                // eslint-disable-next-line
+                /* eslint-disable-next-line */
                 key={index}
                 className={`message ${
                   message.author === "user" ? "user-message" : "bot-message"
@@ -78,6 +71,6 @@ export default function Chatbot() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

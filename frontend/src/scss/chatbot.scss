@@ -5,28 +5,25 @@ html {
 }
 
 .chatbot-container {
+  position: fixed;
+  bottom: 10%; // Réduit la marge en bas pour agrandir le container
+  right: 10%; // Réduit la marge à droite pour agrandir le container
+  width: 80%; // Augmente la largeur du container
+  height: 80%; // Augmente la hauteur du container
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: 300px;
-  margin: auto;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #f4f4f4;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  bottom: 70px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
-  z-index: 2;
+  color: black;
+  background: linear-gradient(to bottom right, #f7f7f7, #e6e6e6);
 }
 
 .message-area {
   flex-grow: 1;
   overflow-y: auto;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .message {
@@ -37,8 +34,8 @@ html {
 }
 
 .message.user-message {
-  background-color: #cfd8dc;
   align-self: flex-end;
+  background-color: #c1a76c;
 }
 
 .input-area {
@@ -66,6 +63,7 @@ html {
   background-color: #d7bf85;
   color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .input-area button:hover {
@@ -86,4 +84,26 @@ html {
 
 .button-chatbot:hover {
   background-color: #c1a76c;
+}
+
+.message.bot-message {
+  background-color: #d7bf85; /* Couleur différente pour les messages du bot */
+  align-self: flex-start;
+}
+
+.message {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.message-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.message-area::-webkit-scrollbar-thumb {
+  background-color: #5c6bc0;
+  border-radius: 4px;
+}
+
+.message-area::-webkit-scrollbar-track {
+  background-color: #f7f7f7;
 }

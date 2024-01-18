@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
+import { Link } from "react-router-dom";
 
 import "../scss/home.scss";
 import "../scss/pages.scss";
@@ -118,9 +119,9 @@ export default function Admin() {
           <div className="admin_container_data_recommanded">
             <div className="last_order_header">
               <h2 className="last_order_header_title">Last orders</h2>
-              <button type="button" className="last_order_header_button">
-                +
-              </button>
+              <Link to="/orders" className="SeeMore">
+                See more
+              </Link>
             </div>
 
             <div className="last_order_product">

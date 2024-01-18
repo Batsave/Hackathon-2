@@ -269,5 +269,16 @@
         }
       }
     }
+    .SeeMore {
+      display: flex;
+      justify-self: flex-end;
+      align-items: center;
+      height: 44px;
+      width: fit-content;
+
+      &:hover {
+        transform: scale(0.9);
+      }
+    }
   }
 }

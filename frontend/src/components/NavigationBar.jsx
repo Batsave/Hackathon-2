@@ -83,7 +83,10 @@ export default function Header() {
               className="Navigation_main_container_logout_btn LorIA"
               onClick={() => setIsChatbotVisible(!isChatbotVisible)}
               aria-label="Toggle Chatbot"
-            />
+            >
+              {" "}
+              <p className="TextGapDeconnexion">LorIA</p>
+            </button>
             <Chatbot className="chatbotcss" isVisible={isChatbotVisible} />
             <button
               type="button"

@@ -1,3 +1,4 @@
+@import "./color-config.scss";
 body,
 html {
   height: 100%;
@@ -12,11 +13,12 @@ html {
   height: 80%; // Augmente la hauteur du container
   background-color: #fff;
   border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 16px rgba($color-black, 0.4);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   color: black;
+  padding: 1rem;
   background: linear-gradient(to bottom right, #f7f7f7, #e6e6e6);
 }
 
@@ -61,7 +63,8 @@ html {
   border: none;
   border-radius: 0 5px 5px 0;
   background-color: #d7bf85;
-  color: white;
+  color: black;
+  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

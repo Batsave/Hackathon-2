@@ -168,7 +168,7 @@ export default function SignIn() {
               onClick={handleSubmit}
               className="signIn"
             >
-              Sign In
+              SIGN IN
             </button>
           </div>
           <p className="error_container" id="errorEmail" />

@@ -84,7 +84,7 @@ const login = async (req, res, next) => {
         const AdminusersToken = jwt.sign(
           {
             email: user[0].email,
-            userId: user[0].id,
+            stylistId: user[0].stylistId,
             admin: user[0].admin,
           },
           process.env.JWT_SECRET,

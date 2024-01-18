@@ -17,7 +17,6 @@ const productsControllers = require("./controllers/productsControllers");
 const stylistsControllers = require("./controllers/stylistsControllers");
 const orderLinesControllers = require("./controllers/orderLinesControllers");
 const emailsControllers = require("./controllers/emailsControllers");
-const salonsControllers = require("./controllers/salonsControllers");
 const { checktoken } = require("./services/CheckTokenMiddleware");
 
 // Route to connect user
@@ -65,14 +64,9 @@ router.post("/nodemailer/send", nodemailerControllers.SendManualMail);
 // ---------------------------------------------------------------------
 router.get("/email", emailsControllers.browse);
 
-// Route salons
-// ---------------------------------------------------------------------
-router.get("/salon", salonsControllers.browse);
-router.post("./salon", salonsControllers.edit);
-
 // Orders Route
 //---------------------------------------------------------------------
-router.get("/order", ordersControllers.browse);
+router.get("/order", ordersControllers.readWithId);
 router.get("/order/:id", ordersControllers.readWithId);
 
 // Stylists Route

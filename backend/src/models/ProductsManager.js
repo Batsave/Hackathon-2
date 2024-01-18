@@ -7,18 +7,18 @@ class ProductsManager extends AbstractManager {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} LIMIT 50`
+      `SELECT * FROM ${this.table} LIMIT 300`
     );
     return rows;
   }
 
-  async read(id) {
+  async read(productId) {
     // Execute the SQL SELECT query to retrieve a specific products by its ID
     const [rows] = await this.database.query(
       `SELECT *
              FROM ${this.table}
-             WHERE id = ?`,
-      [id]
+             WHERE productId = ?`,
+      [productId]
     );
 
     // Return the first row of the result, which represents the products

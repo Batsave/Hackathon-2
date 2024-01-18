@@ -17,6 +17,7 @@ html {
   display: flex;
   flex-direction: column;
   color: black;
+  background: linear-gradient(to bottom right, #f7f7f7, #e6e6e6);
 }
 
 .message-area {
@@ -33,8 +34,8 @@ html {
 }
 
 .message.user-message {
-  background-color: #cfd8dc;
   align-self: flex-end;
+  background-color: #c1a76c;
 }
 
 .input-area {
@@ -62,6 +63,7 @@ html {
   background-color: #d7bf85;
   color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .input-area button:hover {
@@ -82,4 +84,26 @@ html {
 
 .button-chatbot:hover {
   background-color: #c1a76c;
+}
+
+.message.bot-message {
+  background-color: #d7bf85; /* Couleur différente pour les messages du bot */
+  align-self: flex-start;
+}
+
+.message {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.message-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.message-area::-webkit-scrollbar-thumb {
+  background-color: #5c6bc0;
+  border-radius: 4px;
+}
+
+.message-area::-webkit-scrollbar-track {
+  background-color: #f7f7f7;
 }

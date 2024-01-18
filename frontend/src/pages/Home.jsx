@@ -17,21 +17,20 @@ export default function Admin() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [LorIAState, setLorIAState] = useState(false);
-  console.info(LorIAState);
+  const [ordersList, setOrdersList] = useState([]);
+  console.info(ordersList);
 
   useEffect(() => {
-    const CheckAuth = async () => {
+    const GetData = async () => {
       try {
-        const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api/checktoken`,
-          "CheckMePlease",
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/order`,
           {
             withCredentials: true,
           }
         );
-        if (response.data.message === "OK") {
-          setIsLoggedIn(true);
-        } else throw new Error("Accès refusé");
+        setOrdersList(response.data);
+        setIsLoggedIn(true);
       } catch (error) {
         setIsLoggedIn(false);
         setTimeout(() => {
@@ -41,8 +40,19 @@ export default function Admin() {
       setIsLoading(false);
     };
 
-    CheckAuth();
+    GetData();
   }, []);
+
+  const newformat = (date, format) => {
+    const pad = (value) => (value < 10 ? `0${value}` : value);
+    const map = {
+      mm: pad(date.getMonth() + 1),
+      dd: pad(date.getDate()),
+      yyyy: date.getFullYear(),
+    };
+
+    return format.replace(/mm|dd|yyyy/gi, (matched) => map[matched]);
+  };
 
   // logo de chargement et redirection si l'utilisateur n'est pas connecté
   // -----------------------------------------------------------------------------------------------
@@ -106,8 +116,45 @@ export default function Admin() {
         </div>
         <div className="admin_container_data">
           <div className="admin_container_data_recommanded">
-            <h2 className="categoryTitle">Last orders</h2>
-            <div className="list_of_product" />
+            <div className="last_order_header">
+              <h2 className="last_order_header_title">Last orders</h2>
+              <button type="button" className="last_order_header_button">
+                +
+              </button>
+            </div>
+
+            <div className="last_order_product">
+              {ordersList.slice(0, 3).map((order) => (
+                <div className="order" key={order.orderId}>
+                  <div className="order_infos">
+                    <p className="order_infos_date">
+                      {newformat(new Date(order.orderDateTime), "yyyy/mm/dd")}
+                    </p>
+                    <p className="order_infos_number">
+                      Order n° {order.orderId}
+                    </p>
+                  </div>
+                  <div className="order_values">
+                    <div className="order_values_price line">
+                      <p className="title">Price</p>
+                      <p className="value">{order.totalAmount} €</p>
+                    </div>
+                    <div className="order_values_price line qtproduct">
+                      <p className="title">Qt Products</p>
+                      <p className="value">{order.totalQuantity}</p>
+                    </div>
+                    <div className="order_values_price">
+                      <button
+                        type="button"
+                        className="order_values_price_button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="admin_container_data_recommanded">
             <h2 className="categoryTitle">Recommanded products</h2>

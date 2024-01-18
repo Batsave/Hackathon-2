@@ -91,6 +91,16 @@ export default function Admin() {
             </div>
           </div>
         </div>
+        <div className="admin_container_data">
+          <div className="admin_container_data_recommanded">
+            <h2 className="categoryTitle">Last orders</h2>
+            <div className="list_of_product" />
+          </div>
+          <div className="admin_container_data_recommanded">
+            <h2 className="categoryTitle">Recommanded products</h2>
+            <div className="list_of_product" />
+          </div>
+        </div>
       </div>
     </main>
   );

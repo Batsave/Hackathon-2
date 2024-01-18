@@ -1,4 +1,19 @@
-.detailsContainer {
+.details_Container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+}
+.logo {
+  background: url("/assets/svg/favicon_black.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 210px;
+  height: 200px;
+  margin: auto;
+}
+.details {
+  position: relative;
+  top: 15rem;
 }

@@ -13,13 +13,15 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const readWithId = async (req, res, next) => {
   console.info(req.body);
+
   try {
     const productsList = await tables.products.readWithId(req.params.id);
     if (productsList == null) {
       res.sendStatus(404);
     } else {
-      res.json(productsList);
+      res.status(200);
     }
+    res.json(productsList);
   } catch (err) {
     next(err);
   }

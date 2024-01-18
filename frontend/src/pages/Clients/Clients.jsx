@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
-
 import "../../scss/clients/clients.scss";
-
 import Navigation from "../../components/NavigationBar";
 import NavigationPhone from "../../components/NavigationBarPhone";
 import ScrollToTop from "../ResetScrollOnPage";
@@ -19,24 +17,23 @@ export default function Clients() {
 
   // Stockage des informations des clients
   // -----------------------------------------------------------------------------------------------
-  const [clientsList, setClientsList] = useState([]);
+  const [productList, setproductList] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [searchQuantity, setSearchQuantity] = useState("");
-  const [sortBy, setSortBy] = useState("");
-
+  const [sortByProduct, setSortByProduct] = useState("");
   // Verification si l'utilisateur est connécté et si son token est toujours valide
   // -----------------------------------------------------------------------------------------------
   useEffect(() => {
-    const getClientsList = async () => {
+    const getProductsList = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/client`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/product`,
           {
             withCredentials: true,
           }
         );
-        setClientsList(response.data);
+        setproductList(response.data);
         setIsLoggedIn(true);
       } catch (error) {
         setIsLoggedIn(false);
@@ -45,52 +42,50 @@ export default function Clients() {
         }, 3800);
       }
     };
-    getClientsList();
+    getProductsList();
     setIsLoading(false);
   }, []);
-
-  // Fonction de recherche
+  // search function
   // -----------------------------------------------------------------------------------------------
   useEffect(() => {
-    const filteredClients = clientsList.filter(
-      (client) =>
-        client.nom.toLowerCase().includes(searchValue.toLowerCase()) ||
-        client.prenom.toLowerCase().includes(searchValue.toLowerCase()) ||
-        client.email.toLowerCase().includes(searchValue.toLowerCase()) ||
-        client.telephone.toLowerCase().includes(searchValue.toLowerCase())
+    const filteredProducts = productList.filter(
+      (product) =>
+        product.productName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        product.brand.toLowerCase().includes(searchValue.toLowerCase())
     );
     setSearchQuantity(
       searchValue.length === 0
-        ? `${clientsList.length} clients`
-        : `${filteredClients.length} / ${clientsList.length} clients`
+        ? `${productList.length} Products`
+        : `${filteredProducts.length} / ${productList.length} Products`
     );
-    setSearchResult(filteredClients);
-  }, [searchValue, clientsList]);
+    setSearchResult(filteredProducts);
+  }, [searchValue, productList]);
 
-  // Fonction de tri
+  // filtered by brand
   // -----------------------------------------------------------------------------------------------
   useEffect(() => {
-    const sortedClients = [...clientsList].sort((a, b) => {
-      if (sortBy === "AtoZ") {
-        return a.prenom.localeCompare(b.prenom);
+    const sortedProducts = [...productList].sort((a, b) => {
+      if (sortByProduct === "AtoZ") {
+        return a.brand.localeCompare(b.brand);
       }
-      if (sortBy === "ZtoA") {
-        return b.prenom.localeCompare(a.prenom);
+      if (sortByProduct === "ZtoA") {
+        return b.brand.localeCompare(a.brand);
       }
-      if (sortBy === "dateRecent") {
-        return new Date(b.creation_date) - new Date(a.creation_date);
-      }
-      if (sortBy === "dateAncien") {
-        return new Date(a.creation_date) - new Date(b.creation_date);
-      }
+
       return null;
     });
-    setSearchResult(sortedClients);
-  }, [sortBy, clientsList]);
+    setSearchResult(sortedProducts);
+  }, [sortByProduct, productList]);
 
   if (isLoading) {
     return null;
   }
+
+  if (isLoading) {
+    return null;
+  }
+  const generateImage =
+    "https://image.lexica.art/full_webp/d71f6921-7522-4a7b-b527-4504bb732715";
 
   if (!isLoggedIn) {
     return (
@@ -118,43 +113,41 @@ export default function Clients() {
       <NavigationPhone />
       <ScrollToTop />
       <div className="clients_container">
-        <div className="clients_container_filter">
+        <div className="logo_class" alt="logo" />
+        <header className="banner_product">
+          <div className="banner_black">
+            <p>
+              RETROUVER-ICI VOS<strong> PRODUITS STARS </strong>
+              Réunis dans des sets exclusifs
+              <p>
+                DES MILLIERS D'ARTICLES A PRIX <strong>PRO</strong>
+              </p>
+            </p>
+          </div>
+        </header>
+        <div className="products_container_filter">
           <div className="clients_container_filter_box">
             <form className="clients_container_filter_box_form">
-              <label className="clients_container_filter_box_form_icon">
-                {}
-              </label>
               <input
                 type="text"
                 id="searchClient"
                 className="clients_container_filter_box_form_input"
-                placeholder="Rechercher"
+                placeholder=" search..."
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </form>
+            <p>Brand: </p>
             <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              value={sortByProduct}
+              onChange={(e) => setSortByProduct(e.target.value)}
               className="clients_container_filter_box_sort"
             >
               <option value="">Trier par...</option>
               <option value="AtoZ">A à Z</option>
               <option value="ZtoA">Z à A</option>
-              <option value="dateAncien">Ancien</option>
-              <option value="dateRecent">Recent</option>
             </select>
           </div>
-          <button
-            type="button"
-            className="clients_container_filter_box_add"
-            onClick={() => {
-              window.location.href = "/clients/add";
-            }}
-          >
-            <p className="clients_container_filter_box_add_icon">{}</p>
-            Ajouter
-          </button>
         </div>
         <div className="resultQuantity">
           <p>{searchQuantity}</p>
@@ -167,30 +160,28 @@ export default function Clients() {
 
         <div className="clients_container_list">
           {searchResult.length !== 0 ? (
-            <div>
-              {searchResult.map((client) => (
+            <>
+              {searchResult.map((product) => (
                 <ClientListItem
-                  className="clients_container_list_item"
-                  key={client.id}
-                  id={client.id}
-                  nom={client.nom}
-                  prenom={client.prenom}
-                  email={client.email}
-                  telephone={client.telephone}
+                  className="products_container_list_item"
+                  key={product.id}
+                  id={product.id}
+                  generateImage={generateImage}
+                  brand={product.brand}
+                  productName={product.productName}
+                  productCategory={product.productCategory}
                 />
               ))}
-            </div>
+            </>
           ) : (
             <div>
-              {clientsList.map((client) => (
+              {productList.map((product) => (
                 <ClientListItem
-                  className="clients_container_list_item"
-                  key={client.id}
-                  id={client.id}
-                  nom={client.nom}
-                  prenom={client.prenom}
-                  email={client.email}
-                  telephone={client.telephone}
+                  className="products_container_list_item"
+                  key={product.id}
+                  id={product.id}
+                  generateImage={generateImage}
+                  brand={product.brand}
                 />
               ))}
             </div>

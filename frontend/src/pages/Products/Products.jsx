@@ -13,8 +13,8 @@ import ProductListItem from "../../components/itemsList/ProductListItem";
 export default function Clients() {
   // Stockage des informations de connexion
   // -----------------------------------------------------------------------------------------------
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   // Stockage des informations des clients
   // -----------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ export default function Clients() {
             withCredentials: true,
           }
         );
-        setproductList(response.data);
+        await setproductList(response.data);
         setIsLoggedIn(true);
       } catch (error) {
         setIsLoggedIn(false);
@@ -81,10 +81,6 @@ export default function Clients() {
     });
     setSearchResult(sortedProducts);
   }, [sortByProduct, productList]);
-
-  if (isLoading) {
-    return null;
-  }
 
   if (isLoading) {
     return null;

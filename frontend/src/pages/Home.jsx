@@ -145,12 +145,12 @@ export default function Admin() {
                       <p className="value">{order.totalQuantity}</p>
                     </div>
                     <div className="order_values_price">
-                      <button
-                        type="button"
+                      <Link
                         className="order_values_price_button"
+                        to={`/orders/${order.orderId}`}
                       >
                         +
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

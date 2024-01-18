@@ -7,8 +7,8 @@ const currentTime = new Date();
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    const user = await tables.user.readAll();
-    res.json(user);
+    const users = await tables.users.readAll();
+    res.json(users);
   } catch (err) {
     next(err);
   }
@@ -17,12 +17,12 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    const user = await tables.user.read(req.params.id);
+    const users = await tables.users.read(req.params.id);
 
-    if (user == null) {
-      throw new Error("Utilisateur inconnu");
+    if (users == null) {
+      throw new Error("Unknown users");
     } else {
-      res.json(user);
+      res.json(users);
     }
   } catch (err) {
     next(err);
@@ -32,7 +32,7 @@ const read = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the item data from the request body
-  const user = req.body;
+  const users = req.body;
   const hashingOptions = {
     type: argon2.argon2id,
     memoryCost: 19 * 2 ** 10 /* 19 Mio en kio (19 * 1024 kio) */,
@@ -40,12 +40,12 @@ const add = async (req, res, next) => {
     parallelism: 1,
   };
   // Hash the password and delete the plain password
-  const hashedPassword = await argon2.hash(user.password, hashingOptions);
-  delete user.password;
+  const hashedPassword = await argon2.hash(users.password, hashingOptions);
+  delete users.password;
 
   try {
     // Insert the item into the database
-    const insertId = await tables.user.create(user, hashedPassword);
+    const insertId = await tables.users.create(users, hashedPassword);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
@@ -72,8 +72,8 @@ const login = async (req, res, next) => {
 
   try {
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-    console.info(`Nouvelle requête depuis : ${ip}`);
-    const user = await tables.user.signIn(email);
+    console.info(`New request from : ${ip}`);
+    const user = await tables.users.signIn(email);
     const ActualDate = new Date();
     if (user.length === 1) {
       const verified = await argon2.verify(user[0].password, password);
@@ -81,7 +81,7 @@ const login = async (req, res, next) => {
       if (verified) {
         delete user.password;
 
-        const AdminUserToken = jwt.sign(
+        const AdminusersToken = jwt.sign(
           {
             email: user[0].email,
             userId: user[0].id,
@@ -92,26 +92,26 @@ const login = async (req, res, next) => {
         );
 
         if (user[0].admin === 1) {
-          console.info(`Bonjour ${user[0].prenom} ${user[0].nom}`);
-          res.cookie("EpimeleiaAdminToken", AdminUserToken, {
+          console.info(`Welcome Admin : ${user[0].email}`);
+          res.cookie("LorealAdminToken", AdminusersToken, {
             httpOnly: true,
             maxAge: 3600000,
           });
 
           res.status(200).send({
-            message: "Authentification réussie",
+            message: "Authentication is a success",
             admin: true,
           });
-          await tables.user.saveToken(AdminUserToken, email);
-          await tables.user.setLastConnexion(ActualDate, email);
+          await tables.users.saveToken(AdminusersToken, email);
+          await tables.users.setLastConnexion(ActualDate, email);
         } else {
-          throw new Error("Vous n'avez pas les droits d'accès");
+          throw new Error("You have no access here");
         }
       } else {
-        throw new Error("Mot de passe incorrect");
+        throw new Error("Incorrect password");
       }
     } else {
-      throw new Error("Utilisateur inconnu");
+      throw new Error("Unknown users");
     }
   } catch (err) {
     next(err);
@@ -120,17 +120,17 @@ const login = async (req, res, next) => {
 
 const checktoken = async (req, res, next) => {
   res.status(200).send({ message: "OK", admin: true });
-  console.info(`${currentTime} | Admin Connecté depuis : ${req.ip}`);
+  console.info(`${currentTime} | Admin connected for : ${req.ip}`);
   next();
 };
 
 const logout = async (req, res, next) => {
-  if (!req.cookies.EpimeleiaAdminToken) {
-    res.status(403).send({ message: "Vous n'avez pas de Token Actif" });
+  if (!req.cookies.LorealAdminToken) {
+    res.status(403).send({ message: "Your Token is not active" });
   } else {
-    res.clearCookie("EpimeleiaAdminToken");
+    res.clearCookie("LorealAdminToken");
     res.status(200).send({ message: "OK", admin: true });
-    console.info(`${currentTime} | Admin Déconnecté`);
+    console.info(`${currentTime} | Admin is disconnected`);
   }
   next();
 };

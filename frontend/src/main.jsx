@@ -14,6 +14,7 @@ import EmailError from "./pages/EmailError";
 import SignIn from "./pages/Auth/SignIn";
 import SuccessAuth from "./pages/Auth/SuccessAuth";
 import SuccessLogOut from "./pages/Auth/SuccessLogOut";
+import CreateAccount from "./pages/Auth/[NOTUSE]CreateAccount";
 
 import Clients from "./pages/Clients/Clients";
 import ClientId from "./pages/Clients/ClientId";
@@ -26,25 +27,27 @@ import AddGiftcard from "./pages/Giftcards/AddGiftcard";
 import GiftcardID from "./pages/Giftcards/GiftcardId";
 import DeleteGiftcard from "./pages/Giftcards/DeleteGiftcard";
 import SuccessDeleteGiftcard from "./pages/Giftcards/SuccessDelete";
+import ProductDetails from "./pages/ProductDetails";
 
 console.info(`
+██╗      ██████╗ ██████╗ ███████╗ █████╗ ██╗         ██████╗ ██████╗ ██████╗ 
+██║     ██╔═══██╗██╔══██╗██╔════╝██╔══██╗██║         ██╔══██╗╚════██╗██╔══██╗
+██║     ██║   ██║██████╔╝█████╗  ███████║██║         ██████╔╝ █████╔╝██████╔╝
+██║     ██║   ██║██╔══██╗██╔══╝  ██╔══██║██║         ██╔══██╗██╔═══╝ ██╔══██╗
+███████╗╚██████╔╝██║  ██║███████╗██║  ██║███████╗    ██████╔╝███████╗██████╔╝
+╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝    ╚═════╝ ╚══════╝╚═════╝ 
+                                                                             
+██╗███╗   ██╗████████╗███████╗██████╗ ███████╗ █████╗  ██████╗███████╗       
+██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗██╔════╝██╔══██╗██╔════╝██╔════╝       
+██║██╔██╗ ██║   ██║   █████╗  ██████╔╝█████╗  ███████║██║     █████╗         
+██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗██╔══╝  ██╔══██║██║     ██╔══╝         
+██║██║ ╚████║   ██║   ███████╗██║  ██║██║     ██║  ██║╚██████╗███████╗       
+╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝       
+                                                                             
 
-███████╗██████╗ ██╗███╗   ███╗███████╗██╗██╗     ███████╗██╗ █████╗ 
-██╔════╝██╔══██╗██║████╗ ████║██╔════╝██║██║     ██╔════╝██║██╔══██╗
-█████╗  ██████╔╝██║██╔████╔██║█████╗  ██║██║     █████╗  ██║███████║
-██╔══╝  ██╔═══╝ ██║██║╚██╔╝██║██╔══╝  ██║██║     ██╔══╝  ██║██╔══██║
-███████╗██║     ██║██║ ╚═╝ ██║███████╗██║███████╗███████╗██║██║  ██║
-╚══════╝╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═╝
-                                                                    
-███╗   ███╗ █████╗ ███████╗███████╗ █████╗  ██████╗ ███████╗        
-████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██╔════╝ ██╔════╝        
-██╔████╔██║███████║███████╗███████╗███████║██║  ███╗█████╗          
-██║╚██╔╝██║██╔══██║╚════██║╚════██║██╔══██║██║   ██║██╔══╝          
-██║ ╚═╝ ██║██║  ██║███████║███████║██║  ██║╚██████╔╝███████╗        
-╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝     
 ____________________________________________________________________
 
-©️ Developed by Batsave - 2024 - www.baptiste-save.fr
+©️ Developed by TrueKiLeak - 2024 - HACKATHON 2024
 ____________________________________________________________________
 
 `);
@@ -57,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <SignIn />,
+      },
+      {
+        path: "/create",
+        element: <CreateAccount />,
       },
       // Error Section
       {
@@ -137,6 +144,10 @@ const router = createBrowserRouter([
       {
         path: "/success-delete-giftcard",
         element: <SuccessDeleteGiftcard />,
+      },
+      {
+        path: "/productDetails",
+        element: <ProductDetails />,
       },
     ],
   },

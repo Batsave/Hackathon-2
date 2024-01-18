@@ -15,11 +15,9 @@ export default function NotFound() {
           play
           style={{ width: 260, height: 150 }}
         />
-        <h1>Oops! Il semble que la page n'existe pas.</h1>
-        <p className="message">
-          Nous vous conseillons de retourner à la page d'accueil.
-        </p>
-        <PrimaryButton btnText="Retourner à la page d'accueil" btnLink="/" />
+        <h1>You're worth it, but it seems the page doesn't exist.</h1>
+        <p className="message">We advise you to return to the home page.</p>
+        <PrimaryButton btnText="Return to home page" btnLink="/" />
       </div>
     </section>
   );

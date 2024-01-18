@@ -81,16 +81,16 @@ const add = async (req, res, next) => {
       checkEmail.length > 0 &&
       checkTelephone.length > 0
     ) {
-      return res.status(409).json({ message: "Le client existe déjà " });
+      return res.status(409).json({ message: "Customer already exists " });
     }
     if (checkEmail.length > 0 && !checkEmail.value === undefined) {
-      return res
-        .status(409)
-        .json({ message: "L'adresse email fournie est déja liée à un client" });
+      return res.status(409).json({
+        message: "The email address provided is already linked to a customer",
+      });
     }
     if (checkTelephone.length > 0 && !checkTelephone.value === undefined) {
       return res.status(409).json({
-        message: "Le numéro de téléphone fourni est déja lié à un client",
+        message: "The phone number provided is already linked to a customer",
       });
     }
     const insertId = await tables.client.create(newClient);
@@ -107,10 +107,10 @@ const destroy = async (req, res) => {
   const { id } = req.params;
   const deleteClient = await tables.client.delete(id);
   if (!deleteClient) {
-    res.sendStatus(204).send("Le client n'existe pas");
-    throw new Error("Utilisatur introuvable");
+    res.sendStatus(204).send("Customer doesn't exist");
+    throw new Error("User not f");
   }
-  res.sendStatus(200).send("Client Supprimé avec succès");
+  res.sendStatus(200).send("Client Successfully Deleted");
   return deleteClient;
 };
 

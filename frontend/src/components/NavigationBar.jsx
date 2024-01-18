@@ -78,6 +78,12 @@ export default function Header() {
           <div className="Navigation_main_container_logout">
             <button
               type="button"
+              className="Navigation_main_container_logout_btn LorIA"
+            >
+              <p className="TextGapDeconnexion">LorIA</p>
+            </button>
+            <button
+              type="button"
               id="NavigationState"
               className="OpenBar Navigation_main_container_logout_btn"
               onClick={() => setNavState(!NavState)}

@@ -4,7 +4,7 @@ import Lottie from "react-lottie-player";
 
 import "../scss/home.scss";
 import "../scss/pages.scss";
-
+import LorIA from "./Chatbot";
 import Navigation from "../components/NavigationBar";
 import NavigationPhone from "../components/NavigationBarPhone";
 import ResetScrollOnPage from "./ResetScrollOnPage";
@@ -16,6 +16,8 @@ export default function Admin() {
   // -----------------------------------------------------------------------------------------------
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [LorIAState, setLorIAState] = useState(false);
+  console.info(LorIAState);
 
   useEffect(() => {
     const CheckAuth = async () => {
@@ -69,6 +71,17 @@ export default function Admin() {
     ); // or render a login component
   }
 
+  if (LorIAState) {
+    return (
+      <main id="MainContent">
+        <Navigation onClickFunction={() => setLorIAState(!LorIAState)} />
+        <NavigationPhone />
+        <ResetScrollOnPage />
+        <LorIA />;
+      </main>
+    );
+  }
+
   return (
     <main id="MainContent">
       <Navigation />
@@ -102,6 +115,7 @@ export default function Admin() {
           </div>
         </div>
       </div>
+      <LorIA />
     </main>
   );
 }

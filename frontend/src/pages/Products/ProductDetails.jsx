@@ -1,7 +1,13 @@
 // import { useEffect, useState } from "react";
 // import axios from "axios";
+import Navigation from "../../components/NavigationBar";
+import NavigationPhone from "../../components/NavigationBarPhone";
+import ResetScrollOnPage from "../ResetScrollOnPage";
 import Details from "../../components/details";
+
 import "../../scss/ProductDetails.scss";
+
+// import mailError from "../assets/LottieFiles/EmailError.json";
 
 function ProductDetails() {
   // const [productList, setProductList] = useState();
@@ -36,11 +42,16 @@ function ProductDetails() {
   //       );
   //       setproductList(response.data);
   return (
-    <div className="details_Container">
-      <div className="logo">
-        <Details />
+    <main id="MainContent">
+      <Navigation />
+      <NavigationPhone />
+      <ResetScrollOnPage />
+      <div className="details_Container">
+        <div className="logo">
+          <Details />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 

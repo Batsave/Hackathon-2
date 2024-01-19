@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 
 import "../../scss/components/Products/ProductListItem.scss";
 
-
 export default function ProductListItem({
   productId,
   brand,

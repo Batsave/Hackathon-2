@@ -15,11 +15,8 @@ const browse = async (req, res, next) => {
 const readWithId = async (req, res, next) => {
   const { LorealAdminToken } = req.cookies;
   const token = LorealAdminToken;
-
   const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-
   const { stylistId } = decodedToken;
-
   try {
     const StylistInfo = await tables.stylists.readWithId(stylistId);
 
@@ -27,7 +24,6 @@ const readWithId = async (req, res, next) => {
       const ordersList = await tables.orders.readWithSalonId(
         StylistInfo[0].salonId
       );
-
       if (ordersList == null) {
         res.sendStatus(404);
       } else {

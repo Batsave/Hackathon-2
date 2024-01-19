@@ -118,6 +118,7 @@ export default function SignIn() {
         autoPlay={true}
         muted={true}
         loop={true}
+        playsInline={true}
       >
         <source src="/assets/mp4/sign-in-loop.mp4" type="video/mp4" />^
       </video>

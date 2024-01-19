@@ -37,7 +37,7 @@ _____________________________________________________________________________
 
 ©️ Developed by TrueKiLeak - 2024 - HACKATHON 2024
 Deployed by AnthoGorski | Sponsoring by L'Oreal Europe
-Website Host by Wild Code School | 2024
+Website Host by Wild Code School
 _____________________________________________________________________________
 
 `);

@@ -19,8 +19,6 @@ server
     console.error("Error:", err.message);
   });
 
-console.info("Loaded OpenAI API Key:", process.env.OPENAI_API_KEY);
-
 const io = socketIo(server, {
   cors: {
     origin: process.env.FRONTEND_URL,

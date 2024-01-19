@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
+
 import "../../scss/Products/products.scss";
 import "../../scss/Products/productID.scss";
 import Navigation from "../../components/NavigationBar";
@@ -96,11 +97,11 @@ export default function Clients() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Access denied</h1>
+          <h1>Access Denied</h1>
           <p className="message">
             {`
-          Vous n'êtes pas autorisé(e) à acceder a cette page.  `}
-            <br /> {` Vous allez être redirigé(e) vers la page de connexion. `}
+          You are not authorized to access this page.`}
+            <br /> `You will be redirected to the login page.`
           </p>
         </div>
       </section>

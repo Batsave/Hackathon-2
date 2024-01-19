@@ -66,6 +66,12 @@ export default function Chatbot({ isVisible }) {
 
   useEffect(scrollToBottom, [messages]);
 
+  useEffect(() => {
+    if (isVisible) {
+      socket.emit("initiate");
+    }
+  }, [isVisible]);
+
   return (
     <div>
       {isVisible && (

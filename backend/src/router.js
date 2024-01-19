@@ -72,9 +72,11 @@ router.get("/order/:id", ordersControllers.readWithId);
 // Stylists Route
 //---------------------------------------------------------------------
 router.get("/stylist", stylistsControllers.browse);
-router.get("/stylist/:id", stylistsControllers.readWithId);
+router.get("/stylist/informations", stylistsControllers.readStylistsInfoWithId);
 router.post("/stylist", stylistsControllers.add);
-router.put("/stylist/:id", stylistsControllers.edit);
+
+router.get("/stylist/:id", stylistsControllers.readWithId);
+router.post("/stylist/:id", stylistsControllers.edit);
 router.delete("/stylist/:id", stylistsControllers.remove);
 
 // OrderLines Route

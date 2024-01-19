@@ -200,7 +200,7 @@ export default function UserModification() {
 
   return (
     <div className="modification_container">
-      <h2 className="categoryTitle">Modification :</h2>
+      <h2 className="categoryTitle-modi">Modification :</h2>
       {stylist && (
         <form onSubmit={handleSubmit}>
           <label>
@@ -233,6 +233,7 @@ export default function UserModification() {
           <label>
             Newsletter:
             <input
+              className="checkbox"
               type="checkbox"
               name="optinValue"
               checked={formData.optinValue || ""}

@@ -39,9 +39,16 @@ export default function LatestOrders({ id, date, quantity, amount }) {
   );
 }
 
+LatestOrders.defaultProps = {
+  id: "oe81ea58-804f-41db-b121-cbc587d1face",
+  date: "2021-07-04 19:00:00",
+  quantity: 666,
+  amount: 6969,
+};
+
 LatestOrders.propTypes = {
-  id: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired,
-  amount: PropTypes.number.isRequired,
+  id: PropTypes.string,
+  date: PropTypes.string,
+  quantity: PropTypes.number,
+  amount: PropTypes.number,
 };

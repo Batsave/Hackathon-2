@@ -126,7 +126,7 @@
       flex-direction: column;
       background-color: rgba($color-light, 1);
       width: 100%;
-      min-width: 320px;
+      min-width: 260px;
       height: max-content;
       padding: 1rem;
       filter: drop-shadow(0px 0px 12px rgba($color-black, 0.25));
@@ -143,7 +143,7 @@
 
           color: $color-light;
           padding: 0.5rem 1rem;
-          font-size: 1.4rem;
+          font-size: 1rem;
           font-weight: 600;
         }
         &_button {
@@ -270,15 +270,178 @@
         }
       }
     }
+
     .SeeMore {
       display: flex;
       justify-self: flex-end;
       align-items: center;
-      height: 44px;
+      height: 100%;
       width: fit-content;
 
       &:hover {
         transform: scale(0.9);
+      }
+    }
+  }
+
+  &_ad {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba($color-light, 1);
+    width: 100%;
+    min-width: 260px;
+    height: 100%;
+    min-height: 280px;
+    padding: 1rem;
+    filter: drop-shadow(0px 0px 12px rgba($color-black, 0.25));
+    background-image: url("/assets/webp/packshot/produit_4-min.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+
+    &_title {
+      display: flex;
+      width: max-content;
+      background-color: rgba($color-black, 1);
+      color: $color-light;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    &_content {
+      display: flex;
+      width: auto;
+      height: auto;
+      align-self: flex-end;
+      filter: drop-shadow(0px 0px 8px rgba($color-light, 0.2));
+      background-color: $color-light;
+      padding: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease-in-out;
+
+      p {
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-align: center;
+
+        @media screen and (max-width: 680px) {
+          font-size: 1.2rem;
+          font-weight: 600;
+          text-align: center;
+        }
+      }
+      .name {
+        font-size: 1.8rem;
+        font-weight: 900;
+        @media screen and (max-width: 680px) {
+          font-size: 1.4rem;
+          font-weight: 600;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &_adfull {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba($color-light, 1);
+    width: 100%;
+    min-height: 720px;
+    padding: 1rem;
+    filter: drop-shadow(0px 0px 8px rgba($color-black, 0.25));
+    background-color: $color-black;
+    justify-content: center;
+
+    &_content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: 100%;
+      gap: 3rem;
+      @media screen and (max-width: 980px) {
+        grid-template-columns: 1fr;
+      }
+
+      .content_1 {
+        width: 100%;
+        height: 600px;
+        background-image: url("/assets/webp/Mike_Julliard.webp");
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        @media screen and (max-width: 980px) {
+          min-height: 260px;
+          max-height: 400px;
+          background-position: center;
+        }
+      }
+
+      .content_2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        @media screen and (max-width: 980px) {
+          margin: 0 auto;
+        }
+
+        .tagline {
+          width: fit-content;
+          height: fit-content;
+          background-color: $color-light;
+          color: $color-black;
+          padding: 0.2rem 0.6rem;
+          font-size: 1rem;
+          font-weight: 600;
+          text-align: center;
+        }
+        .title {
+          color: $color-light;
+          font-size: 3rem;
+          font-weight: 800;
+          @media screen and (max-width: 1280px) {
+            font-size: 2rem;
+          }
+          @media screen and (max-width: 680px) {
+            font-size: 1.5rem;
+          }
+        }
+        .textDesc {
+          color: $color-light;
+          font-size: 2rem;
+          font-weight: 300;
+          text-align: justify;
+          white-space: wrap;
+          width: 30ch;
+          @media screen and (max-width: 1280px) {
+            font-size: 1.5rem;
+          }
+          @media screen and (max-width: 680px) {
+            font-size: 1rem;
+            width: 100%;
+          }
+        }
+
+        .undertext {
+          color: $color-light;
+          font-size: 1rem;
+          font-weight: 300;
+          text-align: justify;
+          white-space: wrap;
+          width: 60ch;
+          @media screen and (max-width: 1280px) {
+            font-size: 0.9rem;
+            width: 50ch;
+          }
+          @media screen and (max-width: 680px) {
+            font-size: 1rem;
+            width: 100%;
+          }
+        }
       }
     }
   }

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import "../scss/home.scss";
 import "../scss/pages.scss";
-import LorIA from "./Chatbot";
 import Navigation from "../components/NavigationBar";
 import NavigationPhone from "../components/NavigationBarPhone";
 import ResetScrollOnPage from "./ResetScrollOnPage";
@@ -69,11 +68,11 @@ export default function Admin() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Accès Impossible</h1>
+          <h1>Access Denied</h1>
           <p className="message">
             {`
-          Vous n'êtes pas autorisé(e) à acceder a cette page.  `}
-            <br /> {` Vous allez être redirigé(e) vers la page de connexion. `}
+          You are not authorized to access this page.`}
+            <br /> `You will be redirected to the login page.`
           </p>
         </div>
       </section>
@@ -144,13 +143,34 @@ export default function Admin() {
               ))}
             </div>
           </div>
-          <div className="admin_container_data_recommanded">
-            <h2 className="categoryTitle">Recommanded products</h2>
-            <div className="list_of_product" />
+          <div className="admin_container_ad">
+            <h2 className="admin_container_ad_title">Recommanded products</h2>
+            <div className="admin_container_ad_content">
+              <p>
+                Hydrate and Glow with <br />
+                <span className="name">Moisturizer Magic !</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="admin_container_adfull">
+          <div className="admin_container_adfull_content">
+            <div className="content_1" />
+            <div className="content_2">
+              <p className="tagline">Witness</p>
+              <h3 className="title">The pro's opinion</h3>
+              <p className="textDesc">
+                "We don't just beautify hair, we give it new structure, new
+                strength and say goodbye to rubbery hair."
+              </p>
+              <p className="undertext">
+                The Absolut Repair Molecular range was co-developed with repair
+                professionals.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <LorIA />
     </main>
   );
 }

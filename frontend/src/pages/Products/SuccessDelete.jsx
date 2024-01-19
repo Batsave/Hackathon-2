@@ -46,18 +46,18 @@ export default function SuccessDelete() {
   if (!isLoggedIn) {
     return (
       <section>
-        <div className="containesuccess">
+        <div className="containererror">
           <Lottie
             loop
             animationData={mailError}
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Accès Impossible</h1>
+          <h1>Access Denied</h1>
           <p className="message">
             {`
-          Vous n'êtes pas autorisé(e) à acceder a cette page.  `}
-            <br /> {` Vous allez être redirigé(e) vers la page de connexion. `}
+          You are not authorized to access this page.`}
+            <br /> `You will be redirected to the login page.`
           </p>
         </div>
       </section>

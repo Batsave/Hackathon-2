@@ -24,6 +24,7 @@ export default function Clients() {
   const [searchValue, setSearchValue] = useState("");
   const [searchQuantity, setSearchQuantity] = useState("");
   const [sortByProduct, setSortByProduct] = useState("");
+  const [addCart, setAddCart] = useState([]);
   // Verification si l'utilisateur est connécté et si son token est toujours valide
   // -----------------------------------------------------------------------------------------------
 
@@ -118,7 +119,7 @@ export default function Clients() {
           <div className="banner_gold">
             <p>
               Explore the
-              <strong> Wild Code </strong> of beauty
+              <strong> Wild Code </strong> of beauty.
             </p>
           </div>
           <div className="banner_black">
@@ -128,24 +129,23 @@ export default function Clients() {
                 Brought together in exclusive sets
               </p>
               <p>
-                THOUSANDS OF ITEMS AT <strong>PRO PRICES</strong>
+                THOUSANDS OF ITEMS AT <strong>PRO PRICES.</strong>
               </p>
             </div>
           </div>
         </header>
         <div className="products_container_filter">
+          <form className="products_container_filter_box_form">
+            <input
+              type="text"
+              id="searchClient"
+              className="products_container_filter_box_form_input"
+              placeholder=" search..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </form>
           <div className="products_container_filter_box">
-            <form className="products_container_filter_box_form">
-              <input
-                type="text"
-                id="searchClient"
-                className="products_container_filter_box_form_input"
-                placeholder=" search..."
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </form>
-            <p>Brand: </p>
             <select
               value={sortByProduct}
               onChange={(e) => setSortByProduct(e.target.value)}
@@ -163,7 +163,6 @@ export default function Clients() {
         {searchResult.length === 0 && searchValue !== "" ? (
           <p className="resultQuantity">no result found....</p>
         ) : null}
-
         <div className="product_container_list">
           {searchResult.length !== 1 ? (
             <>
@@ -175,6 +174,8 @@ export default function Clients() {
                   brand={product.brand}
                   productName={product.productName}
                   productCategory={product.productCategory}
+                  addCart={addCart}
+                  setAddCart={setAddCart}
                 />
               ))}
             </>

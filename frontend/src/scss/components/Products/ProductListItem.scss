@@ -21,7 +21,7 @@
   background-repeat: no-repeat;
   background-size: 5rem;
   background-position: center;
-  height: 300px;
+  height: 280px;
   border-radius: 6px;
 }
 .productCard_value_name {
@@ -31,6 +31,5 @@
 }
 .productCard_value_category {
   text-align: center;
-  border: 0.5px solid $color-black;
-  border-radius: 0 0 12px 12px;
+  border-top: 0.6px solid rgba(0, 0, 0, 0.685);
 }

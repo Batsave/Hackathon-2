@@ -25,6 +25,7 @@
     transform: rotateX(0);
   }
 }
+
 .product_container_list {
   display: flex;
   flex-wrap: wrap;
@@ -33,11 +34,13 @@
   width: 100%;
   justify-content: center;
 }
+
 .logo_class {
   width: 210px;
   height: 200px;
   margin: auto;
 }
+
 .productCard {
   background: #ffffff;
   font-family: $font;
@@ -45,21 +48,26 @@
   box-shadow: 1px 1px 10px 0.1px rgba(0, 0, 0, 0.33);
   transition: 0.5s;
 }
+
 .productCard:hover {
   transform: scale(0.98);
   transition: 0.5s;
 }
+
 .productCard_value {
   display: flex;
   flex-direction: column;
 }
+
 .border_bottom {
   height: 100px;
   background: $color-black;
 }
+
 .products_page {
   width: 100%;
 }
+
 .products_container_filter {
   display: flex;
   justify-content: end;
@@ -77,6 +85,7 @@
   font-size: 15px;
   font-weight: 900;
 }
+
 .banner_product {
   display: flex;
   flex-direction: row-reverse;
@@ -110,6 +119,7 @@
     animation: translateHorizontal 10s ease infinite;
   }
 }
+
 .banner_black {
   background: $color-black;
   text-align: center;
@@ -118,6 +128,7 @@
   display: flex;
   overflow: hidden;
 }
+
 .logo_class {
   background: url("/assets/svg/favicon_black.svg");
   background-position: center;
@@ -143,6 +154,7 @@
   color: #606060;
   text-shadow: 0 1px #fff;
 }
+
 .button_cart:hover {
   box-shadow:
     0 2px 2px 1px #fcfcfc,
@@ -151,6 +163,7 @@
     0 -6px 4px #fefefe,
     inset 0 0 3px 3px #cecfd1;
 }
+
 .button_cart:active {
   box-shadow:
     0 4px 3px 1px #fcfcfc,
@@ -160,6 +173,7 @@
     inset 0 0 5px 3px #999,
     inset 0 0 30px #aaa;
 }
+
 @media screen and (max-width: 420px) {
   .banner_black p {
     color: white;

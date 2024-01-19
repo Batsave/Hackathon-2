@@ -47,7 +47,6 @@ class TypePaiementManager extends AbstractManager {
       WHERE id=? `,
       [nom.trim(), id]
     );
-    console.info(result);
     return result;
   }
 

@@ -123,7 +123,6 @@ export default function Clients() {
             </p>
           </div>
           <div className="banner_black">
-
             <div>
               <p>
                 FIND YOUR <strong> STAR PRODUCTS HERE </strong>

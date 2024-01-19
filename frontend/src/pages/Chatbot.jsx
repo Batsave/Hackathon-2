@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import "../scss/chatbot.scss";
-
-/* eslint-disable */
+import PropTypes from "prop-types";
 
 const socket = io(import.meta.env.VITE_BACKEND_URL);
 export default function Chatbot({ isVisible }) {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
+  const [isTyping] = useState(false);
   const [hasInitiated, setHasInitiated] = useState(false);
   const messagesEndRef = useRef(null);
 
@@ -56,7 +55,7 @@ export default function Chatbot({ isVisible }) {
           <div className="message-area">
             {messages.map((message, index) => (
               <div
-                key={index}
+                key={index.id}
                 className={`message ${
                   message.author === "user" ? "user-message" : "bot-message"
                 }`}
@@ -96,3 +95,7 @@ export default function Chatbot({ isVisible }) {
     </div>
   );
 }
+
+Chatbot.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+};

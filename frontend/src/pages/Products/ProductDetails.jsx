@@ -1,5 +1,6 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import Navigation from "../../components/NavigationBar";
 import NavigationPhone from "../../components/NavigationBarPhone";
 import ResetScrollOnPage from "../ResetScrollOnPage";
@@ -7,40 +8,28 @@ import Details from "../../components/details";
 
 import "../../scss/ProductDetails.scss";
 
-// import mailError from "../assets/LottieFiles/EmailError.json";
-
 function ProductDetails() {
-  // const [productList, setProductList] = useState();
-  // useEffect(() => {
-  //   const getProductsList = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `
-  //         ${import.meta.env.VITE_BACKEND_URL}/api/product/`,
-  //         {
-  //           withCredentials: true,
-  //         }
-  //       );
-  //       setProductList(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getProductsList();
-  // }, []);
+  const { id } = useParams();
 
-  // const [ProductsList, setproductList] = useState([]);
+  const [productList, setProductList] = useState(null);
 
-  // useEffect(() => {
-  //   const getProductsList = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         ${import.meta.env.VITE_BACKEND_URL}/api/product,
-  //         {
-  //           withCredentials: true,
-  //         }
-  //       );
-  //       setproductList(response.data);
+  useEffect(() => {
+    const getProductsList = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/product/${id}`,
+          {
+            withCredentials: true,
+          }
+        );
+        setProductList(response.data);
+      } catch (error) {
+        console.warn(error);
+      }
+    };
+    getProductsList();
+  }, [id]);
+
   return (
     <main id="MainContent">
       <Navigation />
@@ -48,7 +37,7 @@ function ProductDetails() {
       <ResetScrollOnPage />
       <div className="details_Container">
         <div className="logo">
-          <Details />
+          {productList && <Details products={productList} />}
         </div>
       </div>
     </main>

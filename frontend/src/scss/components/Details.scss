@@ -6,9 +6,7 @@
 }
 
 .picture {
-  background-color: gray;
-  width: 60px;
-  height: 80px;
+  width: 200px;
 }
 
 .img_Container {
@@ -19,18 +17,19 @@
 }
 
 .description {
-  width: 70vw;
+  width: 60vw;
   text-align: center;
   margin-top: 4rem;
   border-top: 1px solid lightgray;
   padding-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .product_and_add_container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .button_add {
@@ -47,4 +46,8 @@
 
 .product_Name {
   margin-bottom: 1rem;
+}
+
+.add_Products p {
+  margin-bottom: 2rem;
 }

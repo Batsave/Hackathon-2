@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+
 import "../../scss/components/Products/ProductListItem.scss";
+
 
 export default function ProductListItem({
   productId,
@@ -12,6 +14,7 @@ export default function ProductListItem({
   addCart,
   setAddCart,
 }) {
+
   const HandleCartClick = (add) => {
     setAddCart([...addCart, add]);
   };
@@ -23,6 +26,7 @@ export default function ProductListItem({
       className="productCard_value"
     >
       <NavLink to={`/products/${productId}`} className="productCard">
+
         <p className="productCard_value_fullname">{brand}</p>
         <div className="position_image"> </div>
         <div className="clientCard_value_infos">

@@ -79,11 +79,21 @@ export default function Chatbot({ isVisible }) {
                   message.author === "user" ? "user-message" : "bot-message"
                 }`}
               >
+                {message.author === "user" ? null : (
+                  <div className="containIco">
+                    <div className="botIcon" />
+                    <p>LorIA</p>
+                  </div>
+                )}
                 {message.content}
               </div>
             ))}
             {isTyping && (
-              <div className="message bot-message">Le chatbot tape...</div>
+              <div className="typingAnimation">
+                <span className="typing-indicator">.</span>
+                <span className="typing-indicator">.</span>
+                <span className="typing-indicator">.</span>
+              </div>
             )}
             <div ref={messagesEndRef} />
           </div>

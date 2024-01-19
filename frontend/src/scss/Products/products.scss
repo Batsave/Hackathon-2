@@ -110,12 +110,15 @@
 .banner_black {
   width: 50%;
 }
-.banner_black p {
-  color: white;
-  margin-top: 0.5rem;
-  font-family: $font;
-  margin-left: 2rem;
-  animation: translateHorizontal 10s ease infinite;
+.banner_black div {
+  p {
+    color: white;
+    margin-top: 0.5rem;
+    font-family: $font;
+    margin-left: 2rem;
+    animation: translateHorizontal 10s ease infinite;
+  }
+
 }
 
 .banner_black {

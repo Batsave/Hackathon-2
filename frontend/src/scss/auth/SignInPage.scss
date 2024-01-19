@@ -3,6 +3,8 @@
   background-color: rgba($color-black, 0.9);
   opacity: 0%;
   animation: Open 0.8s 1s ease-in-out forwards;
+  -moz-animation: Open 0.8s 1s ease-in-out forwards;
+  -webkit-animation: Open 0.8s 1s ease-in-out forwards;
 
   @keyframes Open {
     0% {
@@ -25,6 +27,8 @@
   object-fit: cover;
   opacity: 0%;
   animation: VideoOpen 0.8s 1.8s forwards;
+  -moz-animation: VideoOpen 0.8s 1.8s forwards;
+  -webkit-animation: VideoOpen 0.8s 1.8s forwards;
 
   @keyframes VideoOpen {
     0% {

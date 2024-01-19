@@ -93,10 +93,7 @@ export default function SignIn() {
           },
           { withCredentials: true }
         );
-        // Gérez ici la réponse et le stockage du token
-        // -------------------------------
 
-        // -------------------------------
         console.info(response.data.message);
         document.getElementById("successLog").innerText = "connection...";
 
@@ -115,7 +112,13 @@ export default function SignIn() {
   return (
     <div className="SignInMain">
       <ScrollToTop />
-      <video className="SignIn_container_video" autoPlay muted loop>
+      <video
+        /* eslint-disable */
+        className="SignIn_container_video"
+        autoPlay={true}
+        muted={true}
+        loop={true}
+      >
         <source src="/assets/mp4/sign-in-loop.mp4" type="video/mp4" />^
       </video>
       <div className="SignIn_container ">

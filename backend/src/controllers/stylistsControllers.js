@@ -28,13 +28,14 @@ const readWithId = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const { country, firstname, lastName, stylistRole } = req.body;
+  const { country, firstname, lastName, stylistRole, optinValue } = req.body;
 
   const stylist = {
     country,
     firstname,
     lastName,
     stylistRole,
+    optinValue,
   };
   try {
     const result = await tables.stylists.create(stylist);

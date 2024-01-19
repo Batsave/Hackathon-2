@@ -71,7 +71,7 @@ export default function UserModification() {
     const roleValidPattern = /^[A-Za-z '-]{2,50}$/;
     return roleValidPattern.test(value);
   };
-  const isOptinValid = (value) => {
+  const isOptinValueValid = (value) => {
     const optinValidPattern = /^[0-1]{1}$/;
     return optinValidPattern.test(value);
   };
@@ -105,8 +105,7 @@ export default function UserModification() {
     });
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     try {
       if (!isLastNameValid(formData.lastName)) {
         alertBox({
@@ -135,7 +134,7 @@ export default function UserModification() {
           } else {
             setAlertType("");
 
-            if (!isOptinValid(formData.optinValue)) {
+            if (!isOptinValueValid(formData.optinValue)) {
               alertBox({
                 type: "error",
                 entete: "Modification",
@@ -201,7 +200,7 @@ export default function UserModification() {
 
   return (
     <div className="modification_container">
-      <h2>Modification :</h2>
+      <h2 className="categoryTitle">Modification :</h2>
       {stylist && (
         <form onSubmit={handleSubmit}>
           <label>

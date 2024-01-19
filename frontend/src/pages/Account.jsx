@@ -7,6 +7,8 @@ import ScrollToTop from "./ResetScrollOnPage";
 import UserInformation from "../components/Account/UserInformation";
 import UserModification from "../components/Account/UserModification";
 
+import "../scss/account.scss";
+
 export default function Account() {
   return (
     <main id="MainContent">

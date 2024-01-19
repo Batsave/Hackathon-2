@@ -22,10 +22,10 @@ export default function UserInformation() {
 
   return (
     <div className="information_container">
-      <h1>Informations</h1>
+      <h1 className="categoryTitle">Informations</h1>
       {salon && (
         <div>
-          <h2>Salon Information</h2>
+          <h2 className="categoryTitle">Salon Information</h2>
           <p>Name : {salon.salonName}</p>
           <p>City : {salon.city}</p>
           <p>Country : {salon.country}</p>
@@ -33,7 +33,7 @@ export default function UserInformation() {
       )}
       {stylist && (
         <div>
-          <h2>Stylist Information</h2>
+          <h2 className="categoryTitle">Stylist Information</h2>
           <p>Last Name : {stylist.lastName}</p>
           <p>First Name : {stylist.firstName}</p>
           <p>Role : {stylist.stylistRole}</p>

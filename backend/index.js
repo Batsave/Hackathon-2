@@ -75,6 +75,7 @@ async function fetchResponseToMessage(socketId, userMessage) {
         Final Step: Satisfaction evaluation
         Request feedback on the relevance of the recommendations.
         Ensure customer satisfaction and offer additional assistance if necessary.
+
   `,
       },
     ];
@@ -101,6 +102,12 @@ async function fetchResponseToMessage(socketId, userMessage) {
 }
 
 io.on("connection", (socket) => {
+  socket.on("initiate", () => {
+    const welcomeMessage =
+      "Hello! I am LorIA, your virtual assistant specialized in the sale and advice of L'Oréal cosmetic products. How can I help you today in choosing your products?";
+    socket.emit("message", welcomeMessage);
+  });
+
   socket.on("message", async (message) => {
     const reply = await fetchResponseToMessage(socket.id, message);
     socket.emit("message", reply);

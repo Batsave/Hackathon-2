@@ -1,4 +1,3 @@
-
 #### Projet B2B pour L'Oréal ###
 
 ## Description

@@ -1,3 +1,6 @@
+/* eslint-disable /
+/ prettier-ignore */
+
 @import "./color-config.scss";
 
 .admin_container {
@@ -89,7 +92,6 @@
           display: flex;
           align-self: flex-start;
           width: max-content;
-          height: fit-content;
           padding: 0.8rem 1rem;
           background-color: rgba($color-black, 0);
           border-radius: 2rem;

@@ -122,13 +122,15 @@ export default function Clients() {
             </p>
           </div>
           <div className="banner_black">
-            <p>
-              FIND YOUR <strong> STAR PRODUCTS HERE </strong>
-              Brought together in exclusive sets
+            <div>
+              <p>
+                FIND YOUR <strong> STAR PRODUCTS HERE </strong>
+                Brought together in exclusive sets
+              </p>
               <p>
                 THOUSANDS OF ITEMS AT <strong>PRO PRICES</strong>
               </p>
-            </p>
+            </div>
           </div>
         </header>
         <div className="products_container_filter">

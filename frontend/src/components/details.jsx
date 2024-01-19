@@ -1,31 +1,41 @@
+/* eslint-disable react/prop-types */
 import "../scss/components/Details.scss";
+import imgOne from "../../public/assets/jpg/img_one.jpg";
+import imgTwo from "../../public/assets/jpg/img_two.jpg";
+import imgThree from "../../public/assets/jpg/img_three.jpg";
+import imgFour from "../../public/assets/jpg/img_four.jpg";
 
-function Details() {
+function Details({ products }) {
   return (
-    <div className="details">
-      <h2 className="brand">brand</h2>
-      <div className="product_and_add_container">
-        <div className="img_Container">
-          <img className="picture" src="" alt="" />
-          <img className="picture" src="" alt="" />
-          <img className="picture" src="" alt="" />
-          <img className="picture" src="" alt="" />
+    <div>
+      <div className="details" key={products.productId}>
+        <h2 className="brand">{products.brand}</h2>
+        <div className="product_and_add_container">
+          <div className="img_Container">
+            <img className="picture" src={imgOne} alt="" />
+            <img className="picture" src={imgTwo} alt="" />
+            <img className="picture" src={imgThree} alt="" />
+            <img className="picture" src={imgFour} alt="" />
+          </div>
+          <div className="add_Products">
+            <h3 className="product_Name">{products.productName}</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
+              laudantium porro cum est eos adipisci blanditiis nesciunt
+              praesentium in aliquid.
+            </p>
+            <button className="button_add" type="button">
+              AJOUTER AU PANIER
+            </button>
+          </div>
         </div>
-        <div className="add_Products">
-          <h3 className="product_Name">nom du produit</h3>
-          <p>texte de description</p>
-          <button className="button_add" type="button">
-            AJOUTER AU PANIER
-          </button>
-        </div>
+        <p className="description">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium,
+          repellat! Aspernatur harum, rem, odit iusto consequuntur aut
+          voluptatem fugit maxime nihil sint culpa numquam dolorem nam pariatur
+          repellendus ut similique.
+        </p>
       </div>
-      <p className="description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. In cumque
-        consectetur natus beatae voluptatibus ut, neque aliquid asperiores
-        vitae? Temporibus saepe laudantium eum fugiat neque placeat aliquid
-        sint, animi est quas, tempora sit, possimus dolorem. Reprehenderit
-        necessitatibus quia delectus eum.
-      </p>
     </div>
   );
 }

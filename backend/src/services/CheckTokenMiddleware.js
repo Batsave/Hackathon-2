@@ -5,6 +5,7 @@ const tables = require("../tables");
 const currentTime = new Date();
 
 const checktoken = async (req, res, next) => {
+  console.info("Test Entry");
   try {
     if (!req.cookies.LorealAdminToken) {
       console.warn("rekt no token");

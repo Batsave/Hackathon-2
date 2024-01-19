@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../../scss/components/Products/ProductListItem.scss";
 import { NavLink } from "react-router-dom";
+// import { useState } from "react";
 
 export default function ProductListItem({
   productId,
@@ -9,11 +10,8 @@ export default function ProductListItem({
   productName,
   productCategory,
 }) {
-  function handleClick() {
-    window.location.href = `/products/${productId}`;
-  }
   return (
-    <NavLink onClick={() => handleClick()} className="productCard">
+    <NavLink to={`/products/${productId}`} className="productCard">
       <div className="productCard_value">
         <p className="productCard_value_fullname">{brand}</p>
         <div className="position_image"> </div>

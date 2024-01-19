@@ -51,7 +51,6 @@ class UserManager extends AbstractManager {
     password=? WHERE id=? `,
       [updatedUser.email, updatedUser.password, id]
     );
-    console.info(result);
     return result;
   }
 
@@ -84,7 +83,6 @@ class UserManager extends AbstractManager {
       `SELECT * FROM ${this.table} WHERE email=?`,
       [email]
     );
-
     return user;
   }
 
@@ -93,7 +91,6 @@ class UserManager extends AbstractManager {
       `UPDATE ${this.table} SET token=NULL WHERE token=? `,
       [token]
     );
-    console.info(result);
     return result;
   }
 

@@ -17,7 +17,7 @@ export default function SignIn() {
       )
       .then((res) => {
         if (res.data.message === "OK") {
-          console.info("Connexion Approuvée");
+          console.info("Connection OK");
           window.location.href = "/home";
         }
       });
@@ -78,8 +78,7 @@ export default function SignIn() {
     try {
       if (!isEmailValid(details.email)) {
         document.getElementById("errorLog").innerText = "";
-        document.getElementById("errorEmail").innerText =
-          "Votre Email n'est pas valide";
+        document.getElementById("errorEmail").innerText = "Email not valid";
         document.getElementById("email").classList.add("errorOnPlaceholder");
       } else {
         document.getElementById("errorEmail").innerText = "";
@@ -99,8 +98,7 @@ export default function SignIn() {
 
         // -------------------------------
         console.info(response.data.message);
-        document.getElementById("successLog").innerText =
-          "Authentification en cours...";
+        document.getElementById("successLog").innerText = "connection...";
 
         localStorage.setItem("LorealAdminToken", response.data.token);
 

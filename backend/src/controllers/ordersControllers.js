@@ -27,7 +27,7 @@ const readWithId = async (req, res, next) => {
       const ordersList = await tables.orders.readWithSalonId(
         StylistInfo[0].salonId
       );
-      console.info("check token in Order Done");
+
       if (ordersList == null) {
         res.sendStatus(404);
       } else {

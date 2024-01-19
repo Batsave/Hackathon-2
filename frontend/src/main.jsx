@@ -36,8 +36,8 @@ console.info(`
 _____________________________________________________________________________
 
 ©️ Developed by TrueKiLeak - 2024 - HACKATHON 2024
-Deployed by AnthoGorski | Sponsoring by L'Oreal Europe
-Website Host by Wild Code School
+Deployed by AnthoGorski | Sponsored by L'Oreal Europe
+Website Hosted by Wild Code School
 _____________________________________________________________________________
 
 `);

@@ -10,10 +10,10 @@ class SalonsManager extends AbstractManager {
     return rows;
   }
 
-  async readWithStylistId(stylistId) {
+  async readWithSalonId(salonId) {
     const [results] = await this.database.query(
-      `SELECT * FROM ${this.table} where stylistId=?`,
-      [stylistId]
+      `SELECT * FROM ${this.table} where salonId=?`,
+      [salonId]
     );
     return results;
   }

@@ -80,12 +80,11 @@ class UserManager extends AbstractManager {
   }
 
   async checkToken(email) {
-    console.info("entrée dans le manager");
     const [user] = await this.database.query(
       `SELECT * FROM ${this.table} WHERE email=?`,
       [email]
     );
-    console.info(user);
+
     return user;
   }
 

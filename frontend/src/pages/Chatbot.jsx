@@ -1,14 +1,15 @@
-import "../scss/chatbot.scss";
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
+import "../scss/chatbot.scss";
+
+/* eslint-disable */
 
 const socket = io(import.meta.env.VITE_BACKEND_URL);
-
-/* eslint-disable-next-line */
 export default function Chatbot({ isVisible }) {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [hasInitiated, setHasInitiated] = useState(false);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -29,48 +30,24 @@ export default function Chatbot({ isVisible }) {
     }
   };
 
-  const simulateTyping = (newMessage) => {
-    setIsTyping(true);
-    let typedMessage = "";
-    const typingSpeed = 7;
-    const characters = newMessage.split("");
-
-    const typeCharacter = (index) => {
-      if (index < characters.length) {
-        typedMessage += characters[index];
-        setMessages((prevMessages) => [
-          ...prevMessages.slice(0, -1),
-          { content: typedMessage, author: "bot" },
-        ]);
-        scrollToBottom();
-        setTimeout(() => typeCharacter(index + 1), typingSpeed);
-      } else {
-        setIsTyping(false);
-      }
-    };
-
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { content: "", author: "bot" },
-    ]);
-    typeCharacter(0);
-  };
-
   useEffect(() => {
+    if (isVisible && !hasInitiated) {
+      socket.emit("initiate");
+      setHasInitiated(true);
+    }
+
     socket.on("message", (message) => {
-      simulateTyping(message);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { content: message, author: "bot" },
+      ]);
+      scrollToBottom();
     });
 
     return () => socket.off("message");
-  }, []);
+  }, [isVisible]);
 
   useEffect(scrollToBottom, [messages]);
-
-  useEffect(() => {
-    if (isVisible) {
-      socket.emit("initiate");
-    }
-  }, [isVisible]);
 
   return (
     <div>
@@ -79,7 +56,6 @@ export default function Chatbot({ isVisible }) {
           <div className="message-area">
             {messages.map((message, index) => (
               <div
-                /* eslint-disable-next-line */
                 key={index}
                 className={`message ${
                   message.author === "user" ? "user-message" : "bot-message"
@@ -94,15 +70,15 @@ export default function Chatbot({ isVisible }) {
                 {message.content}
               </div>
             ))}
-            {isTyping && (
-              <div className="typingAnimation">
-                <span className="typing-indicator">.</span>
-                <span className="typing-indicator">.</span>
-                <span className="typing-indicator">.</span>
-              </div>
-            )}
             <div ref={messagesEndRef} />
           </div>
+          {isTyping && (
+            <div className="typingAnimation">
+              <span className="typing-indicator">.</span>
+              <span className="typing-indicator">.</span>
+              <span className="typing-indicator">.</span>
+            </div>
+          )}
           <div className="input-area">
             <input
               type="text"

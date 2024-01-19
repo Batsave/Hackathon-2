@@ -1,16 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../scss/components/LatestOrders.scss";
 
-const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-  return new Date(dateString).toLocaleDateString(undefined, options);
+const newformat = (date, format) => {
+  const pad = (value) => (value < 10 ? `0${value}` : value);
+  const map = {
+    mm: pad(date.getMonth() + 1),
+    dd: pad(date.getDate()),
+    yyyy: date.getFullYear(),
+  };
+
+  return format.replace(/mm|dd|yyyy/gi, (matched) => map[matched]);
 };
 
-export default function LatestOrders({ orders }) {
+export default function LatestOrders({ id, date, quantity, amount }) {
   return (
-    <section>
+    <div>
       <div className="LatestOrders">
-        <h2 className="LatestOrders_title">Latest Orders</h2>
         <div className="LatestOrders_container">
           <div className="LatestOrders_container_head">
             <div>Order ID</div>
@@ -18,27 +24,31 @@ export default function LatestOrders({ orders }) {
             <div>Quantity</div>
             <div>Amount</div>
           </div>
-          {orders.map((order) => (
-            <div key={order.orderId} className="LatestOrders_container_body">
-              <div>{order.orderId}</div>
-              <div>{formatDate(order.orderDate)}</div>
-              <div>{order.totalQuantity}</div>
-              <div>{order.totalAmount} €</div>
+
+          <div className="LatestOrders_container_body">
+            <div>{id}</div>
+            <div className="order_date">
+              Date : {newformat(new Date(date), "dd/mm/yyyy")}
             </div>
-          ))}
+            <div>{quantity}</div>
+            <div>{amount} €</div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
+LatestOrders.defaultProps = {
+  id: "oe81ea58-804f-41db-b121-cbc587d1face",
+  date: "2021-07-04 19:00:00",
+  quantity: 666,
+  amount: 6969,
+};
+
 LatestOrders.propTypes = {
-  orders: PropTypes.arrayOf(
-    PropTypes.shape({
-      orderId: PropTypes.string.isRequired,
-      orderDate: PropTypes.string.isRequired,
-      totalQuantity: PropTypes.number.isRequired,
-      totalAmount: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  id: PropTypes.string,
+  date: PropTypes.string,
+  quantity: PropTypes.number,
+  amount: PropTypes.number,
 };

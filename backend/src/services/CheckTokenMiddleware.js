@@ -8,7 +8,6 @@ const checktoken = async (req, res, next) => {
   console.info("Test Entry");
   try {
     if (!req.cookies.LorealAdminToken) {
-      console.warn("rekt no token");
       throw new Error("Access denied");
     } else {
       const { LorealAdminToken } = req.cookies;

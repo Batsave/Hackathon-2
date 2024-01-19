@@ -15,6 +15,7 @@ export default function Account() {
       <ScrollToTop />
       <Navigation />
       <NavigationPhone />
+      <h1 className="accountTitle">My Account</h1>
       <UserInformation />
       <UserModification />
     </main>

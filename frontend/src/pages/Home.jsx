@@ -12,7 +12,7 @@ import ResetScrollOnPage from "./ResetScrollOnPage";
 import mailError from "../assets/LottieFiles/EmailError.json";
 
 export default function Admin() {
-  // Verification si l'utilisateur est connécté et si son token est toujours valide
+  // Checking if the user is logged in and if their token is still valid
   // -----------------------------------------------------------------------------------------------
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -52,7 +52,7 @@ export default function Admin() {
     return format.replace(/mm|dd|yyyy/gi, (matched) => map[matched]);
   };
 
-  // logo de chargement et redirection si l'utilisateur n'est pas connecté
+  // Checking if the user is logged in and if their token is still valid
   // -----------------------------------------------------------------------------------------------
   if (isLoading) {
     return null;

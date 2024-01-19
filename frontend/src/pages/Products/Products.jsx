@@ -24,6 +24,7 @@ export default function Clients() {
   const [searchValue, setSearchValue] = useState("");
   const [searchQuantity, setSearchQuantity] = useState("");
   const [sortByProduct, setSortByProduct] = useState("");
+  const [addCart, setAddCart] = useState([]);
   // Verification si l'utilisateur est connécté et si son token est toujours valide
   // -----------------------------------------------------------------------------------------------
 
@@ -100,8 +101,11 @@ export default function Clients() {
           <h1>Access denied</h1>
           <p className="message">
             {`
-          Vous n'êtes pas autorisé(e) à acceder a cette page.  `}
-            <br /> {` Vous allez être redirigé(e) vers la page de connexion. `}
+          
+You are not authorized to access this page.  `}
+            <br />
+            {` 
+You will be redirected to the login page.`}
           </p>
         </div>
       </section>
@@ -160,7 +164,6 @@ export default function Clients() {
         {searchResult.length === 0 && searchValue !== "" ? (
           <p className="resultQuantity">no result found....</p>
         ) : null}
-
         <div className="product_container_list">
           {searchResult.length !== 1 ? (
             <>
@@ -172,6 +175,8 @@ export default function Clients() {
                   brand={product.brand}
                   productName={product.productName}
                   productCategory={product.productCategory}
+                  addCart={addCart}
+                  setAddCart={setAddCart}
                 />
               ))}
             </>

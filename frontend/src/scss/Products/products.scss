@@ -1,5 +1,3 @@
-/* eslint-disable */
-/* prettier-ignore */
 @import "../color-config.scss";
 
 @keyframes translateHorizontal {
@@ -73,23 +71,19 @@
 .products_container_filter {
   display: flex;
   justify-content: end;
+  margin-top: 1rem;
 }
-
-.products_container_filter_box_form_input {
-  width: 12rem;
-  height: 2rem;
-  border-radius: 6px;
-  border: none;
-  margin-top: 3rem;
-  margin-bottom: 0.5rem;
-  box-shadow: 1px 1px 6px 1px rgb(177, 175, 175);
-}
-
-.products_container_filter_box_sort {
-  width: 6rem;
-  height: 2rem;
-  border-radius: 6px;
-  box-shadow: 1px 1px 6px 1px rgb(214, 214, 214);
+//----------------- element card ------------
+.card {
+  width: 100px;
+  margin-left: 40rem;
+  height: 50px;
+  background: linear-gradient(to right, #fbf5b7, #aa771c, #bf953f);
+  transition: all 0.4s;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.705);
+  font-size: 15px;
+  font-weight: 900;
 }
 
 .banner_product {
@@ -116,13 +110,14 @@
 .banner_black {
   width: 50%;
 }
-.banner_black p {
-  color: white;
-  margin-top: 0.5rem;
-  font-family: $font;
-
-  margin-left: 2rem;
-  animation: translateHorizontal 10s ease infinite;
+.banner_black div {
+  p {
+    color: white;
+    margin-top: 0.5rem;
+    font-family: $font;
+    margin-left: 2rem;
+    animation: translateHorizontal 10s ease infinite;
+  }
 }
 
 .banner_black {
@@ -139,4 +134,64 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+.button_cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  width: 200px;
+  height: 25px;
+  background-image: linear-gradient(to top, #d8d9db 0%, #fff 80%, #fdfdfd 100%);
+  border-radius: 10px;
+  border: 1px solid #8f9092;
+  transition: all 0.2s ease;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #606060;
+  text-shadow: 0 1px #fff;
+}
+
+.button_cart:hover {
+  box-shadow:
+    0 2px 2px 1px #fcfcfc,
+    0 3px 4px #d6d7d9,
+    0 -3px 3px #cecfd1,
+    0 -6px 4px #fefefe,
+    inset 0 0 3px 3px #cecfd1;
+}
+
+.button_cart:active {
+  box-shadow:
+    0 4px 3px 1px #fcfcfc,
+    0 6px 8px #d6d7d9,
+    0 -4px 4px #cecfd1,
+    0 -6px 4px #fefefe,
+    inset 0 0 5px 3px #999,
+    inset 0 0 30px #aaa;
+}
+
+@media screen and (max-width: 420px) {
+  .banner_black p {
+    color: white;
+    margin-top: 0.5rem;
+    font-family: $font;
+    font-size: 0.6rem;
+    margin-left: 0;
+    animation: translateHorizontal 15s ease infinite;
+  }
+  .banner_gold p {
+    animation: translateGolden 6s ease infinite;
+    font-size: 0.6rem;
+    text-align: center;
+  }
+  .banner_black {
+    background: $color-black;
+    text-align: center;
+    height: 20rem;
+    width: 23rem;
+  }
 }

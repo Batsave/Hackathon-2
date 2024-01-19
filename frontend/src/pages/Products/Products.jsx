@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Lottie from "react-lottie-player";
+
 import "../../scss/Products/products.scss";
 import "../../scss/Products/productID.scss";
 import Navigation from "../../components/NavigationBar";
@@ -23,6 +24,7 @@ export default function Clients() {
   const [searchValue, setSearchValue] = useState("");
   const [searchQuantity, setSearchQuantity] = useState("");
   const [sortByProduct, setSortByProduct] = useState("");
+  const [addCart, setAddCart] = useState([]);
   // Verification si l'utilisateur est connécté et si son token est toujours valide
   // -----------------------------------------------------------------------------------------------
 
@@ -96,11 +98,11 @@ export default function Clients() {
             play
             style={{ width: 120, height: 120 }}
           />
-          <h1>Access denied</h1>
+          <h1>Access Denied</h1>
           <p className="message">
             {`
-          Vous n'êtes pas autorisé(e) à acceder a cette page.  `}
-            <br /> {` Vous allez être redirigé(e) vers la page de connexion. `}
+          You are not authorized to access this page.`}
+            <br /> `You will be redirected to the login page.`
           </p>
         </div>
       </section>
@@ -117,32 +119,33 @@ export default function Clients() {
           <div className="banner_gold">
             <p>
               Explore the
-              <strong> Wild Code </strong> of beauty
+              <strong> Wild Code </strong> of beauty.
             </p>
           </div>
           <div className="banner_black">
-            <p>
-              FIND YOUR <strong> STAR PRODUCTS HERE </strong>
-              Brought together in exclusive sets
+            <div>
               <p>
-                THOUSANDS OF ITEMS AT <strong>PRO PRICES</strong>
+                FIND YOUR <strong> STAR PRODUCTS HERE </strong>
+                Brought together in exclusive sets
               </p>
-            </p>
+              <p>
+                THOUSANDS OF ITEMS AT <strong>PRO PRICES.</strong>
+              </p>
+            </div>
           </div>
         </header>
         <div className="products_container_filter">
+          <form className="products_container_filter_box_form">
+            <input
+              type="text"
+              id="searchClient"
+              className="products_container_filter_box_form_input"
+              placeholder=" search..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </form>
           <div className="products_container_filter_box">
-            <form className="products_container_filter_box_form">
-              <input
-                type="text"
-                id="searchClient"
-                className="products_container_filter_box_form_input"
-                placeholder=" search..."
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </form>
-            <p>Brand: </p>
             <select
               value={sortByProduct}
               onChange={(e) => setSortByProduct(e.target.value)}
@@ -160,7 +163,6 @@ export default function Clients() {
         {searchResult.length === 0 && searchValue !== "" ? (
           <p className="resultQuantity">no result found....</p>
         ) : null}
-
         <div className="product_container_list">
           {searchResult.length !== 1 ? (
             <>
@@ -172,6 +174,8 @@ export default function Clients() {
                   brand={product.brand}
                   productName={product.productName}
                   productCategory={product.productCategory}
+                  addCart={addCart}
+                  setAddCart={setAddCart}
                 />
               ))}
             </>

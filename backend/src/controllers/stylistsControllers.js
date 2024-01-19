@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 const tables = require("../tables");
 
 const browse = async (req, res, next) => {
@@ -26,13 +28,14 @@ const readWithId = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const { country, firstname, lastName, stylistRole } = req.body;
+  const { country, firstname, lastName, stylistRole, optinValue } = req.body;
 
   const stylist = {
     country,
     firstname,
     lastName,
     stylistRole,
+    optinValue,
   };
   try {
     const result = await tables.stylists.create(stylist);
@@ -46,17 +49,26 @@ const add = async (req, res, next) => {
 };
 
 const edit = async (req, res, next) => {
-  const { stylistId } = req.params;
-  const { country, firstName, lastName, stylistRole, optinValue } = req.body;
+  const { LorealAdminToken } = req.cookies;
+  const token = LorealAdminToken;
+
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+
+  const { stylistId } = decodedToken;
+
+  const { firstName, lastName, stylistRole, optinValue } = req.body;
+  console.info(req.body);
+  console.info(stylistId);
   try {
     const result = await tables.stylists.update(
-      country,
       firstName,
       lastName,
       stylistRole,
       optinValue,
       stylistId
     );
+
+    console.info(result);
     if (result == null) {
       res.status(404).json({ message: "Stylist doesn't exist" });
     } else {
@@ -82,9 +94,24 @@ const remove = async (req, res) => {
   }
 };
 
+const readStylistsInfoWithId = async (req, res, next) => {
+  const { LorealAdminToken } = req.cookies;
+  const token = LorealAdminToken;
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  const { stylistId } = decodedToken;
+  try {
+    const Stylist = await tables.stylists.readWithId(stylistId);
+    const Salon = await tables.salons.readWithSalonId(Stylist[0].salonId);
+    res.status(200).json({ Stylist, Salon });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
   readWithId,
+  readStylistsInfoWithId,
   add,
   edit,
   remove,

@@ -1,11 +1,10 @@
 import React from "react";
-
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./pages/404";
-
 import Home from "./pages/Home";
+import Account from "./pages/Account";
 
 import SignIn from "./pages/Auth/SignIn";
 import SuccessAuth from "./pages/Auth/SuccessAuth";
@@ -69,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
       },
 
       // Products Section

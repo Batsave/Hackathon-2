@@ -26,10 +26,10 @@ class StylistsManager extends AbstractManager {
     return result;
   }
 
-  async update(country, firstName, lastName, stylistRole, optinValue) {
+  async update(firstName, lastName, stylistRole, optinValue, stylistId) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET country = ?, firstname = ?, lastname = ?, stylistRole = ?, optinvalue = ?  WHERE id = ?`,
-      [country, firstName, lastName, stylistRole, optinValue]
+      `UPDATE ${this.table} SET firstName = ?, lastName = ?, stylistRole = ?, optinValue = ?  WHERE stylistId = ?`,
+      [firstName, lastName, stylistRole, optinValue, stylistId]
     );
     return result.affectedRows;
   }
